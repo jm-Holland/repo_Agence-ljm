@@ -43,6 +43,18 @@
                         Contact
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Connexion</a></li>
+                                <li><a href="#">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -54,37 +66,43 @@
         <button class="uk-offcanvas-close" type="button" uk-close></button>
 
         <ul class="uk-nav uk-nav-default">
+
+            <li class="uk-nav-header">NAVBAR</li>
             <li>
-                <a href="{{ path('home_index')}}">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
-                    Home
+                <a href="#">
+                    <span class="uk-margin-small-right" uk-icon="icon: home"></span>
+                    home
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+                    <span class="uk-margin-small-right" uk-icon="icon: star"></span>
                     Services
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: image"></span>
+                    <span class="uk-margin-small-right" uk-icon="icon: image"></span>
                     Portfolio
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: comment"></span>
+                    <span class="uk-margin-small-right" uk-icon="icon: comment"></span>
                     Blog
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: mail"></span>
-                    Contact
+                    <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    User
                 </a>
+            <li class="uk-nav-divider"></li>
+            <ul class="uk-nav-sub">
+                <li><a href="#">Connexion</a></li>
+                <li><a href="#">Déconnexion</a></li>
+            </ul>
             </li>
         </ul>
-
     </div>
 </div>

@@ -14,7 +14,8 @@ Création d'une agence Web multimédia pour le P-5 OpenClassRooms
 
 En cours de démarrage , mis en place du zooming , remplissage avec des images aléatoires issu de banques d'images
 
-- Lorem pixel  [lorempixel.com](https://lorempixel.com) avec les sujets
+1. Lorem pixel  [lorempixel.com](https://lorempixel.com) avec les sujets
+
     - nature,
     - sports,
     - city,
@@ -26,14 +27,14 @@ En cours de démarrage , mis en place du zooming , remplissage avec des images a
     - technics,
     - nightlife.
 
-- loremFlickr _ [loremflickr](https://loremflickr.com) avec les sujets
+2. loremFlickr _ [loremflickr](https://loremflickr.com) avec les sujets
 
     - nature,
     - urban,
     - cars,
     - people.
 
-#### Descriptif:
+#### Descriptif
 
 Site Vitrine pour l'agence L2J réalisé en collaboration avec les outils suivants:
 

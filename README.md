@@ -13,6 +13,7 @@ Création d'une agence Web multimédia pour le P-5 OpenClassRooms
 ### Etat du projet
 
 En cours de démarrage , mis en place du zooming , remplissage avec des images aléatoires issu de banques d'images
+
 - Lorem pixel  [lorempixel.com](https://lorempixel.com) avec les sujets
     - nature,
     - sports,
@@ -24,7 +25,9 @@ En cours de démarrage , mis en place du zooming , remplissage avec des images a
     - abstract,
     - technics,
     - nightlife.
+
 - loremFlickr _ [loremflickr](https://loremflickr.com) avec les sujets
+
     - nature,
     - urban,
     - cars,

@@ -1,4 +1,4 @@
-# AGENCE L2J
+# AGENCE WEB Multimédia L2J
 
 Création d'une agence Web multimédia pour le P-5 OpenClassRooms
 

@@ -45,5 +45,4 @@ Site Vitrine pour l'agence L2J réalisé en collaboration avec les outils suivan
 * Bitbucket  _ [Bitbucket](https://bitbucket.org)
 
 screenshot:
-
 ![Projet Agence L2J One-page](/public/img/onePage.png "One-page")

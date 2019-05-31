@@ -1,41 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Quicksand&display=swap');
+
+/* Modification de police de caractères */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+p {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
 /* Modification des variables UIkit*/
 
 .uk-button-text {
-    color: #0C4353
+    color: #0C4353;
 }
 
 .uk-button-text:hover {
-    color: #3CA5A5
+    color: #3CA5A5;
 }
 
 .uk-button-primary {
-    background-color: #0C4353
+    background-color: #0C4353;
 }
 
 .uk-button-primary:hover {
-    background-color: #3CA5A5
+    background-color: #3CA5A5;
 }
 
 .uk-icon {
-    color: #3CA5A5
+    color: #3CA5A5;
 }
 
 .uk-offcanvas-bar a {
-    color: #3CA5A5
+    color: #3CA5A5;
 }
 
 .uk-icon:hover {
-    color: #0C4353
+    color: #0C4353;
 }
 
 .uk-offcanvas-bar a:hover {
-    color: #0C4353
+    color: #0C4353;
 }
 
 .services {
-    color: #F75A31
+    color: #F75A31;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .uk-card-default .uk-card-title {
-    color: #F75A31
+    color: #F75A31;
+    font-family: 'Quicksand', sans-serif;
 }

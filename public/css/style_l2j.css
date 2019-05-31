@@ -20,7 +20,15 @@
     color: #3CA5A5
 }
 
+.uk-offcanvas-bar a {
+    color: #3CA5A5
+}
+
 .uk-icon:hover {
+    color: #0C4353
+}
+
+.uk-offcanvas-bar a:hover {
     color: #0C4353
 }
 

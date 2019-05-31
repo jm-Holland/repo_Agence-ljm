@@ -6,7 +6,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+a {
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -15,13 +16,19 @@ p {
 }
 
 /* Modification des variables UIkit*/
+.uk-navbar-item,
+.uk-navbar-nav li a {
+    font-family: 'Quicksand', sans-serif;
+}
 
 .uk-button-text {
     color: #0C4353;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .uk-button-text:hover {
     color: #3CA5A5;
+
 }
 
 .uk-button-primary {
@@ -38,6 +45,7 @@ p {
 
 .uk-offcanvas-bar a {
     color: #3CA5A5;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .uk-icon:hover {
@@ -48,12 +56,13 @@ p {
     color: #0C4353;
 }
 
-.services {
+.uk-card-default .uk-card-title {
     color: #F75A31;
     font-family: 'Quicksand', sans-serif;
 }
 
-.uk-card-default .uk-card-title {
+/* Modification propre agence l2J*/
+.services {
     color: #F75A31;
     font-family: 'Quicksand', sans-serif;
 }

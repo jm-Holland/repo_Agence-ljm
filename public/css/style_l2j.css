@@ -1,0 +1,33 @@
+/* Modification des variables UIkit*/
+
+.uk-button-text {
+    color: #0C4353
+}
+
+.uk-button-text:hover {
+    color: #3CA5A5
+}
+
+.uk-button-primary {
+    background-color: #0C4353
+}
+
+.uk-button-primary:hover {
+    background-color: #3CA5A5
+}
+
+.uk-icon {
+    color: #3CA5A5
+}
+
+.uk-icon:hover {
+    color: #0C4353
+}
+
+.services {
+    color: #F75A31
+}
+
+.uk-card-default .uk-card-title {
+    color: #F75A31
+}

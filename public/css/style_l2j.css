@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Quicksand&display=swap');
 
+body,html {
+    height: 100%;
+}
+
 /* Modification de police de caractères */
 h1,
 h2,
@@ -70,4 +74,17 @@ p {
 #logo {
     max-width: 7.5rem;
     max-height: 3.75rem;
+}
+
+.index-arrow .uk-icon{
+    color: #4f4f4f;
+}
+.full-page-img{
+    background-image: url("https://via.placeholder.com/1800x1200");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -80px;
+    width: 100%;
 }

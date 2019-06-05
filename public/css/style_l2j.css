@@ -62,7 +62,12 @@ p {
 }
 
 /* Modification propre agence l2J*/
-.services {
-    color: #F75A31;
+.backColor {
+    background-color: #4f4f4f;
     font-family: 'Quicksand', sans-serif;
+}
+
+#logo {
+    max-width: 7.5rem;
+    max-height: 3.75rem;
 }

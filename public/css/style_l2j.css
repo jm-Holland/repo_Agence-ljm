@@ -30,6 +30,12 @@ h1, h2, h3{
 p {
     font-family: 'Noto Sans JP', sans-serif;
 }
+.uk-section-secondary p, .uk-section-secondary h2, .uk-section-secondary h3 {
+    color: #FFFFFF;
+}
+.uk-section-default p, .uk-section-default h2, .uk-section-default h3{
+    color:#1c1c1c
+}
 
 strong, .fa-arrow-circle-down{
     color: #F74A31;
@@ -86,6 +92,18 @@ strong, .fa-arrow-circle-down{
 .uk-button-primary
 {
     background-color: #3ca5c5 !important;
+    min-height: 80px;
+}
+.uk-section-secondary .uk-input, .uk-section-secondary .uk-textarea, .uk-section-secondary .uk-select{
+    background-color:#fff !important;
+    color: #4f4f4f !important;
+    border: none !important;
+}
+.uk-section-secondary .uk-input::placeholder, .uk-section-secondary .uk-textarea::placeholder{
+    color: #4f4f4f !important;
+}
+.uk-section-secondary .uk-select{
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A") !important;
 }
 
 
@@ -112,8 +130,10 @@ strong, .fa-arrow-circle-down{
     min-height: 200px;
 }
 .blog-button button{
-    min-height: 80px;
     min-width: 360px;
     margin: 0 auto;
-    margin-top: 20px;
+}
+footer .uk-container{
+    padding-top: 20px
+
 }

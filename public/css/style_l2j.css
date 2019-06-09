@@ -14,8 +14,15 @@ h6,
 a {
     font-family: 'Quicksand', sans-serif;
 }
+h1{
+    font-size: 3.5rem;
+    margin-bottom: 100px;
+}
+h1, .uk-section-secondary p, .fa-arrow-circle-down:hover{
+    color: #fff;
+}
 
-h2, h3{
+h1, h2, h3{
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -23,12 +30,8 @@ h2, h3{
 p {
     font-family: 'Noto Sans JP', sans-serif;
 }
-.uk-section-secondary p {
-    color: #fff;
-}
 
-
-strong {
+strong, .fa-arrow-circle-down{
     color: #F74A31;
 }
 
@@ -100,12 +103,8 @@ strong {
     max-width: 7.5rem;
     max-height: 3.75rem;
 }
-
-.index-arrow .uk-icon{
-    color: #4f4f4f;
-}
 .full-page-img{
-    background-image: url("https://via.placeholder.com/1800x1200");
+    background-image: url("../img/bg.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;

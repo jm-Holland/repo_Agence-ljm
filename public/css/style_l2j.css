@@ -68,17 +68,24 @@ strong, .fa-arrow-circle-down{
     color: #fff;
     margin-left: 15px;
 }
-
-.uk-button-secondary{
-    background-color: #0c4353;
+.uk-button{
     border: none;
     font-size: 1.5rem;
     font-weight:bold;
     text-transform: uppercase;
     font-family: 'Quicksand', sans-serif;
+    color: #fff !important;
 }
-.uk-button-secondary:active, .uk-button-secondary:hover{
-    background-color: #3ca5c5;
+.uk-button-secondary{
+    background-color: #0c4353;
+}
+.uk-button-secondary:active, .uk-button-secondary:hover,
+.uk-button-primary:active, .uk-button-primary:hover{
+    background-color: #F74A31 !important;
+}
+.uk-button-primary
+{
+    background-color: #3ca5c5 !important;
 }
 
 
@@ -103,4 +110,10 @@ strong, .fa-arrow-circle-down{
 }
 .refs-button button{
     min-height: 200px;
+}
+.blog-button button{
+    min-height: 80px;
+    min-width: 360px;
+    margin: 0 auto;
+    margin-top: 20px;
 }

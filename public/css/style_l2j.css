@@ -15,8 +15,21 @@ a {
     font-family: 'Quicksand', sans-serif;
 }
 
+h2, h3{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 p {
     font-family: 'Noto Sans JP', sans-serif;
+}
+.uk-section-secondary p {
+    color: #fff;
+}
+
+
+strong {
+    color: #F74A31;
 }
 
 /* Modification des variables UIkit*/
@@ -66,9 +79,8 @@ p {
 }
 
 /* Modification propre agence l2J*/
-.backColor {
-    background-color: #4f4f4f;
-    font-family: 'Quicksand', sans-serif;
+.uk-section-secondary {
+    background-color: #1c1c1c;
 }
 
 #logo {
@@ -87,4 +99,7 @@ p {
     background-size: cover;
     margin-top: -80px;
     width: 100%;
+}
+.service-img{
+    min-height:200px;
 }

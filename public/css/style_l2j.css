@@ -33,10 +33,34 @@ strong {
 }
 
 /* Modification des variables UIkit*/
+.uk-section-secondary {
+    background-color: #1c1c1c;
+}
+.uk-section-primary{
+    background-color: #101010;
+}
+.uk-section-default{
+    background-color: #eeeeee;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent){
+    background-color: #1c1c1c;
+}
 .uk-navbar-item,
 .uk-navbar-nav li a {
     font-family: 'Quicksand', sans-serif;
+    color: #fff;
+    font-weight: bold;
 }
+.uk-navbar-nav>li>a:active, .uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus,
+.uk-navbar-item .uk-icon:hover, .uk-navbar-item .uk-icon:active, .uk-navbar-item .uk-icon:focus{
+    color: #F74A31;
+}
+.uk-navbar-item .uk-icon{
+    color: #fff;
+    margin-left: 15px;
+}
+
 
 .uk-button-text {
     color: #0C4353;
@@ -79,9 +103,6 @@ strong {
 }
 
 /* Modification propre agence l2J*/
-.uk-section-secondary {
-    background-color: #1c1c1c;
-}
 
 #logo {
     max-width: 7.5rem;

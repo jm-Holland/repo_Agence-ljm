@@ -2,7 +2,7 @@
     uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #sticky-dropbar-push">
     <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="{{ path('home_index')}}">
+            <a class="uk-navbar-item uk-logo" href="#index">
                 <img id="logo" data-src="{{asset('img/logo_L2J.png')}}" alt="logo site" uk-img>
             </a>
         </div>
@@ -10,34 +10,34 @@
             <a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon href="off-canvas-push" uk-toggle="target: #offcanvas-push"></a>
         </div>
         <div class="uk-navbar-right uk-visible@m">
-            <ul class="uk-navbar-nav">
+            <ul class="uk-navbar-nav" uk-scrollspy-nav="closest: li; scroll: true; offset:80">
                 <li>
-                    <a href="{{ path('home_index')}}">
+                    <a href="#index" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         Accueil
                     </a>
                 </li>
                 <li>
-                    <a href="#services">
+                    <a href="#services" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         Nos services
                     </a>
                 </li>
                 <li>
-                    <a href="#refs">
+                    <a href="#refs" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         Nos références
                     </a>
                 </li>
                 <li>
-                    <a href="#blog-section">
+                    <a href="#blog-section" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         Le blog
                     </a>
                 </li>
                 <li>
-                    <a href="#agence">
+                    <a href="#agence" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         L'agence
                     </a>
                 </li>
                 <li>
-                    <a href="#contact">
+                    <a href="#contact" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                         Contact
                     </a>
                 </li>

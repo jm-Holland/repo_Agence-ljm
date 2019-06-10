@@ -69,7 +69,8 @@ strong, .fa-arrow-circle-down{
 .uk-offcanvas-bar .uk-nav-default>li>a:active, .uk-offcanvas-bar .uk-nav-default>li>a:hover, .uk-offcanvas-bar .uk-nav-default>li>a:focus,
 .uk-offcanvas-bar .uk-close:focus, .uk-offcanvas-bar .uk-close:hover,
 .footer-social a:hover, .footer-social a:active, .footer-social a:focus,
-a.uk-text-small:hover, a.uk-text-small:active, a.uk-text-small:focus{
+a.uk-text-small:hover, a.uk-text-small:active, a.uk-text-small:focus,
+.uk-link-toggle:hover .uk-link-heading{
     color: #F74A31 !important;
 }
 .uk-navbar-nav>li.uk-active>a {
@@ -113,6 +114,14 @@ a.uk-text-small:hover, a.uk-text-small:active, a.uk-text-small:focus{
 a.uk-text-small{
     margin-right: 15px;
     color: rgba(255, 255, 255, 0.7) !important;
+}
+.uk-overlay-default{
+    background-color: rgba(12, 67, 83, 0.7);
+}
+.uk-overlay-default p{
+    color:#fff;
+    text-transform: uppercase;
+    font-family: 'Quicksand', sans-serif;
 }
 
 

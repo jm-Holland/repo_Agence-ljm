@@ -1,0 +1,48 @@
+<div class="uk-sticky"
+     uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #sticky-dropbar-push">
+    <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#index">
+                <img id="logo" data-src="{{asset('img/logo_L2J.png')}}" alt="logo site" uk-img>
+            </a>
+        </div>
+        <div class="uk-navbar-right">
+            <a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon href="off-canvas-push" uk-toggle="target: #offcanvas-push"></a>
+        </div>
+        <div class="uk-navbar-right uk-visible@m">
+            <ul class="uk-navbar-nav" uk-scrollspy-nav="closest: li; scroll: true; offset:80">
+                <li>
+                    <a href="{{ path('home_index') }}" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
+                        Retourner à l'accueil
+                    </a>
+                </li>
+            </ul>
+            <div class="uk-navbar-item">
+                <a href="" uk-icon="icon: instagram"></a>
+                <a href="" uk-icon="icon: twitter"></a>
+                <a href="" uk-icon="icon: facebook"></a>
+            </div>
+        </div>
+
+    </nav>
+</div>
+<div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true; flip: true">
+
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+
+            <li>
+                <a href="{{ path('home_index')}}">
+                    Retourner à l'accueil
+                </a>
+            </li>
+        </ul>
+        <div class="uk-navbar-item">
+            <a href="" uk-icon="icon: instagram"></a>
+            <a href="" uk-icon="icon: twitter"></a>
+            <a href="" uk-icon="icon: facebook"></a>
+        </div>
+    </div>
+</div>

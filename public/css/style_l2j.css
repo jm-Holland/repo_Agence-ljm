@@ -37,9 +37,10 @@ p, .uk-text-small {
     color:#1c1c1c
 }
 
-strong, .fa-arrow-circle-down{
+#services strong, .fa-arrow-circle-down{
     color: #F74A31;
 }
+
 
 /* Modification des variables UIkit*/
 .uk-section{

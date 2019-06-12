@@ -10,6 +10,7 @@ use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -71,6 +72,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Article $article, UploaderHelper $uploaderHelper): Response
     {
@@ -78,23 +80,27 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $uploadedFile = $form['image']->getData();
             if ($uploadedFile) {
                 $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
-                $article->setImage($newFilename);
+                $article->setImageFilename($newFilename);
             }
+
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', "Votre article a bien été mis à jour");
-            return $this->redirectToRoute('article_index', [
+            $this->addFlash('success', 'Article mise à jour');
+
+            return $this->redirectToRoute('article_show', [
                 'id' => $article->getId(),
             ]);
         }
-
+        $this->addFlash('warning', "Vous avez un probleme");
         return $this->render('article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="article_delete", methods={"DELETE"})

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Quicksand&display=swap');
 
-body,html {
+body,
+html {
     height: 100%;
 }
 
@@ -14,113 +15,155 @@ h6,
 a {
     font-family: 'Quicksand', sans-serif;
 }
-h1{
+
+h1 {
     font-size: 3.5rem;
     margin-bottom: 100px;
 }
-h1, .uk-section-secondary p{
-    color: #fff;
-}
 
-h1, h2, h3{
+
+
+h1,
+h2,
+h3 {
     text-transform: uppercase;
     font-weight: bold;
 }
 
-p, .uk-text-small {
+p,
+.uk-text-small {
     font-family: 'Noto Sans JP', sans-serif;
 }
-.uk-section-secondary p, .uk-section-secondary h2, .uk-section-secondary h3 {
-    color: #FFFFFF;
-}
-.uk-section-default p, .uk-section-default h2, .uk-section-default h3{
-    color:#1c1c1c
+
+.uk-section-default p,
+.uk-section-default h2,
+.uk-section-default h3 {
+    color: #1c1c1c
 }
 
-#services strong, .fa-arrow-circle-down{
+#services strong,
+.fa-arrow-circle-down {
     color: #F74A31;
 }
 
 
 /* Modification des variables UIkit*/
-.uk-section{
+.uk-section {
     padding-top: 80px;
 }
-.uk-section-secondary, .uk-navbar-container:not(.uk-navbar-transparent), .uk-offcanvas-bar {
+
+.uk-section-secondary,
+.uk-navbar-container:not(.uk-navbar-transparent),
+.uk-offcanvas-bar {
     background-color: #1c1c1c;
 }
-.uk-section-primary{
+
+.uk-section-primary {
     background-color: #101010;
 }
-.uk-section-default{
+
+.uk-section-default {
     background-color: #eeeeee;
 }
+
 .uk-navbar .uk-icon,
 .uk-navbar-nav li a,
 .uk-offcanvas-bar .uk-nav-default>li>a,
-.uk-offcanvas-bar .uk-close{
+.uk-offcanvas-bar .uk-close {
     font-family: 'Quicksand', sans-serif;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
 }
-.uk-navbar-nav>li>a:active, .uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus,
-.uk-navbar-item .uk-icon:hover, .uk-navbar-item .uk-icon:active, .uk-navbar-item .uk-icon:focus,
-.uk-navbar .uk-icon:hover, .uk-navbar .uk-icon:active, .uk-navbar .uk-icon:focus,
-.uk-offcanvas-bar .uk-nav-default>li>a:active, .uk-offcanvas-bar .uk-nav-default>li>a:hover, .uk-offcanvas-bar .uk-nav-default>li>a:focus,
-.uk-offcanvas-bar .uk-close:focus, .uk-offcanvas-bar .uk-close:hover,
-.footer-social a:hover, .footer-social a:active, .footer-social a:focus,
-a.uk-text-small:hover, a.uk-text-small:active, a.uk-text-small:focus,
-.uk-link-toggle:hover .uk-link-heading, .uk-link-toggle:focus .uk-link-heading{
+
+.uk-navbar-nav>li>a:active,
+.uk-navbar-nav>li:hover>a,
+.uk-navbar-nav>li>a.uk-open,
+.uk-navbar-nav>li>a:focus,
+.uk-navbar-item .uk-icon:hover,
+.uk-navbar-item .uk-icon:active,
+.uk-navbar-item .uk-icon:focus,
+.uk-navbar .uk-icon:hover,
+.uk-navbar .uk-icon:active,
+.uk-navbar .uk-icon:focus,
+.uk-offcanvas-bar .uk-nav-default>li>a:active,
+.uk-offcanvas-bar .uk-nav-default>li>a:hover,
+.uk-offcanvas-bar .uk-nav-default>li>a:focus,
+.uk-offcanvas-bar .uk-close:focus,
+.uk-offcanvas-bar .uk-close:hover,
+.footer-social a:hover,
+.footer-social a:active,
+.footer-social a:focus,
+a.uk-text-small:hover,
+a.uk-text-small:active,
+a.uk-text-small:focus,
+.uk-link-toggle:hover .uk-link-heading,
+.uk-link-toggle:focus .uk-link-heading {
     color: #F74A31 !important;
 }
+
 .uk-navbar-nav>li.uk-active>a {
     color: #F74A31;
 }
-.uk-navbar-item .uk-icon{
+
+.uk-navbar-item .uk-icon {
     color: #fff;
     margin-left: 15px;
 }
-.uk-button{
+
+.uk-button {
     border: none;
     font-size: 1.5rem;
-    font-weight:bold;
+    font-weight: bold;
     text-transform: uppercase;
     font-family: 'Quicksand', sans-serif;
     color: #fff !important;
 }
-.uk-button-secondary{
+
+.uk-button-secondary {
     background-color: #0c4353;
 }
-.uk-button-secondary:active, .uk-button-secondary:hover,
-.uk-button-primary:active, .uk-button-primary:hover{
+
+.uk-button-secondary:active,
+.uk-button-secondary:hover,
+.uk-button-primary:active,
+.uk-button-primary:hover {
     background-color: #F74A31 !important;
 }
-.uk-button-primary
-{
+
+.uk-button-primary {
     background-color: #3ca5c5 !important;
     min-height: 80px;
 }
-.uk-section-secondary .uk-input, .uk-section-secondary .uk-textarea, .uk-section-secondary .uk-select{
-    background-color:#fff !important;
+
+.uk-section-secondary .uk-input,
+.uk-section-secondary .uk-textarea,
+.uk-section-secondary .uk-select {
+    background-color: #fff !important;
     color: #4f4f4f !important;
     border: none !important;
 }
-.uk-section-secondary .uk-input::placeholder, .uk-section-secondary .uk-textarea::placeholder{
+
+.uk-section-secondary .uk-input::placeholder,
+.uk-section-secondary .uk-textarea::placeholder {
     color: #4f4f4f !important;
 }
-.uk-section-secondary .uk-select{
+
+.uk-section-secondary .uk-select {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A") !important;
 }
-a.uk-text-small{
+
+a.uk-text-small {
     margin-right: 15px;
     color: rgba(255, 255, 255, 0.7) !important;
 }
-.uk-overlay-default{
+
+.uk-overlay-default {
     background-color: rgba(12, 67, 83, 0.7);
 }
-.uk-overlay-default p{
-    color:#fff;
+
+.uk-overlay-default p {
+    color: #fff;
     text-transform: uppercase;
     font-family: 'Quicksand', sans-serif;
 }
@@ -133,7 +176,8 @@ a.uk-text-small{
     max-width: 7.5rem;
     max-height: 3.75rem;
 }
-.full-page-img{
+
+.full-page-img {
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -142,19 +186,24 @@ a.uk-text-small{
     width: 100%;
     margin-top: -80px;
 }
-.service-img{
-    min-height:200px;
-}
-.refs-button button{
+
+.service-img {
     min-height: 200px;
 }
-.blog-button button{
+
+.refs-button button {
+    min-height: 200px;
+}
+
+.blog-button button {
     min-width: 360px;
     margin: 0 auto;
 }
-footer .uk-container{
+
+footer .uk-container {
     padding-top: 20px
 }
-.footer-social a{
+
+.footer-social a {
     margin-right: 15px;
 }

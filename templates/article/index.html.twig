@@ -3,7 +3,7 @@
 {% block title %}Blog_liste{% endblock %}
 
 {% block body %}
-<section class="uk-section uk-section-secondary">
+<section class="uk-section ">
     <div class="uk-container">
         <h1>Liste des Articles</h1>
         {% if is_granted('ROLE_USER') %}
@@ -14,16 +14,37 @@
         <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" uk-grid>
             {% for article in articles %}
             <div>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top">
-                        <img src="{{ asset(article.imagePath) }}" alt="{{ article.captionImage }}">
+                <div class="uk-card uk-card-default uk-card-hover">
+                    <div class="uk-width-auto">
+                        <img data-src="{{ asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+                    </div>
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">{{article.title}}</h3>
+                                <p class="uk-text-meta uk-margin-remove-top">{{article.createdAt|date('d/m/Y à H:i')}}
+                                </p>
+                                <p class="uk-text-meta uk-margin-remove-top">{{article.author.username}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title">{{ article.title }}</h3>
-                        <p class="uk-text-small">Publié par {{ article.author.userName }}</p>
-                        le {{ article.createdAt|date('d/m/Y à H:i') }}
-                        <p>{{ article.content|slice(0,150)|raw}}
+                        <p>{{article.content|slice(0,150)}}
                         </p>
+                    </div>
+                    <div class="uk-card-footer">
+                        <a href="{{ path('article_show',{'id': article.id})}}" class=""><span
+                                uk-icon="icon: plus-circle"></span> Lire
+                            plus</a>
+                        {% if is_granted('ROLE_USER') %}
+                        <div class="uk-float-right">
+                            <a class="" href="{{ path('article_edit', {'id': article.id}) }}">
+                                <span uk-icon="file-edit"></span>
+                            </a>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -32,5 +53,5 @@
             {% endfor %}
         </div>
     </div>
-</section> <a class="uk-button uk-button-link" href="{{ path('article_new') }}">Create new</a>
+</section>
 {% endblock %}

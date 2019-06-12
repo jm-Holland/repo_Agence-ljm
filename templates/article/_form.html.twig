@@ -1,4 +1,39 @@
 {{ form_start(form) }}
+<form action="" method="post" enctype="multipart/form-data" class="uk-form-stacked">
+    {# upload Image#}
+    <img src="{{ asset(article.imagePath) }}" alt="" uk-img />
+    <div class="uk-margin">
+        <label class="uk-form-label">Sélectionner une image</label>
+
+        <div class="uk-form-controls">
+            {{form_widget(form.image)}}
+        </div>
+    </div>
+    {# captionImage #}
+    <div class="uk-margin">
+        <label class="uk-form-label">Description de l'image</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.captionImage)}}
+        </div>
+    </div>
+    {# title of article #}
+    <div class="uk-margin">
+        <label class="uk-form-label">Titre</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.title)}}
+        </div>
+    </div>
+    {# Content of article #}
+    <div>
+        <div class="uk-margin">
+            <label class="uk-form-label">Contenu</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.content)}}
+            </div>
+        </div>
+    </div>
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
+</form>
+
 {{ form_end(form) }}

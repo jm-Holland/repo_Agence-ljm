@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Service\UploaderHelper;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -21,7 +22,7 @@ class Article
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -39,9 +40,20 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 1200,
+     *     minHeight = 200,
+     *     maxHeight = 1200
+     * )
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     */
+    private $captionImage;
 
     /**
      * @ORM\Column(type="text")
@@ -59,9 +71,15 @@ class Article
      */
     private $comments;
 
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+    }
+    public function getImagePath()
+    {
+        return  'img/uploads/' . UploaderHelper::ARTICLE_IMAGE . '/' . $this->getImage();
     }
 
     /**
@@ -106,7 +124,7 @@ class Article
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage(string $image): self
     {
         $this->image = $image;
 
@@ -164,6 +182,18 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCaptionImage(): ?string
+    {
+        return $this->captionImage;
+    }
+
+    public function setCaptionImage(?string $captionImage): self
+    {
+        $this->captionImage = $captionImage;
 
         return $this;
     }

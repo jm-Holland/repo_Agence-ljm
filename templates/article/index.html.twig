@@ -16,13 +16,13 @@
             <div>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-media-top">
-                        <img src="https://source.unsplash.com/random" alt="">
+                        <img src="{{ asset(article.imagePath) }}" alt="{{ article.captionImage }}">
                     </div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title">{{article.title}}</h3>
+                        <h3 class="uk-card-title">{{ article.title }}</h3>
                         <p class="uk-text-small">Publié par {{ article.author.userName }}</p>
-                        le {{ article.createdAt|date('d/m/Y à H:i')}}
-                        <p>{{article.content}}
+                        le {{ article.createdAt|date('d/m/Y à H:i') }}
+                        <p>{{ article.content|slice(0,150)|raw}}
                         </p>
                     </div>
                 </div>

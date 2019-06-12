@@ -1,7 +1,7 @@
 {{ form_start(form) }}
 <form action="" method="post" enctype="multipart/form-data" class="uk-form-stacked">
     {# upload Image#}
-    <img src="{{ asset(article.imagePath) }}" alt="" uk-img />
+    <img src="{{ asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img />
     <div class="uk-margin">
         <label class="uk-form-label">Sélectionner une image</label>
 

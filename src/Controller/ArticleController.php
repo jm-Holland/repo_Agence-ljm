@@ -5,13 +5,13 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\UploaderHelper;
-use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @Route("/article")
@@ -31,7 +31,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UploaderHelper $uploaderHelper): Response
     {
         $article = new Article();
         $article->setAuthor($this->getUser());
@@ -47,7 +47,7 @@ class ArticleController extends AbstractController
                 $article->setImage($newFilename);
             }
 
-            $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -74,7 +74,7 @@ class ArticleController extends AbstractController
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function edit(Request $request, Article $article, UploaderHelper $uploaderHelper): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager, Article $article, UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -86,15 +86,15 @@ class ArticleController extends AbstractController
                 $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
                 $article->setImageFilename($newFilename);
             }
-
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->persist($article);
+            $entityManager->flush();
             $this->addFlash('success', 'Article mise à jour');
 
             return $this->redirectToRoute('article_show', [
                 'id' => $article->getId(),
             ]);
         }
-        $this->addFlash('warning', "Vous avez un probleme");
+        $this->addFlash('warning', "Vous avez un problème");
         return $this->render('article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),

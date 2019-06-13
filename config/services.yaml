@@ -13,7 +13,7 @@ services:
 
         # setup special, global autowriting rules
         bind:
-            $uploadsPath: '%kernel.project_dir%/public/img/uploads/'
+            $uploadsPath: '%kernel.project_dir%/public/uploads/'
 
 
 
@@ -31,3 +31,4 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'

@@ -3,13 +3,13 @@
     {# upload Image#}
     {% if article.image is empty %}
     {% else %}
-    <img src="{{ asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img />
+    <img data-src="{{uploaded_asset('article.imagePath')}}" uk-img>
     {% endif %}
     <div class="uk-margin">
         <label class="uk-form-label">Sélectionner une image</label>
 
         <div class="uk-form-controls">
-            {{form_widget(form.image)}}
+            {{form_row(form.image)}}
         </div>
     </div>
     {# captionImage #}

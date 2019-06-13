@@ -79,7 +79,7 @@ class Article
     }
     public function getImagePath()
     {
-        return  'img/uploads/' . UploaderHelper::ARTICLE_IMAGE . '/' . $this->getImage();
+        return  UploaderHelper::ARTICLE_IMAGE . '/' . $this->getImage();
     }
 
     /**

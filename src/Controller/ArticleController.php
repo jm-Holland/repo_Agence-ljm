@@ -82,6 +82,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $uploadedFile = $form['image']->getData();
+
             if ($uploadedFile) {
                 $newFilename =  $uploaderHelper->uploadArticleImage($uploadedFile);
                 $article->setImageFilename($newFilename);
@@ -94,7 +95,8 @@ class ArticleController extends AbstractController
                 'id' => $article->getId(),
             ]);
         }
-        $this->addFlash('warning', "Vous avez un problème");
+
+
         return $this->render('article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),

@@ -3,11 +3,11 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-<section class="uk-section uk-section-secondary">
+<section class="uk-section ">
     <div class="uk-container">
         <h1>Article</h1>
         <article class="uk-article">
-            <img data-src="{{ asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+            <img data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
             <h1 class="uk-article-title">
                 <a class="uk-link-reset" href="">{{ article.title }}</a>
             </h1>
@@ -21,7 +21,8 @@
             <p class="uk-text-lead">{{ article.content|raw}}</p>
         </article>
 
-        <div class="uk-margin"> <a class="uk-button uk-button-text" href="{{ path('article_index') }}">back to list</a>
+        <div class="uk-margin"> <a class="uk-button uk-button-text" href="{{ path('article_index') }}">back to
+                list</a>
             {% if is_granted('ROLE_USER') %}
             <a class="uk-margin-left" href="{{ path('article_edit', {'id': article.id}) }}">
                 <span uk-icon="icon: file-edit"></span>

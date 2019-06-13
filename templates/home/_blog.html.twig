@@ -6,7 +6,7 @@
             {% for article in articles %}
             <div>
                 <a href="{{ path('article_show',{'id': article.id})}}" class=" uk-link-toggle">
-                    <img class="uk-border-rounded" src="{{article.imagePath}}" alt="Article 1">
+                    <img class="uk-border-rounded" src="{{uploaded_asset(article.imagePath)}}" alt="Article 1">
                     <h3 class="uk-link-heading">{{ article.title }}</h3>
                 </a>
             </div>

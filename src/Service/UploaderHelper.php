@@ -1,10 +1,9 @@
 <?php
 namespace App\Service;
 
-
 use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+use Symfony\Component\Asset\Context\RequestStackContext;
 
 class UploaderHelper
 {
@@ -12,25 +11,29 @@ class UploaderHelper
 
     private $uploadsPath;
 
-    public function __construct(string $uploadsPath)
+    public function __construct(string $uploadsPath, RequestStackContext $requestStackContext)
     {
         $this->uploadsPath = $uploadsPath;
+        $this->requestStackContext = $requestStackContext;
     }
-    public function getImagePath()
-    {
-        return 'uploads/article_image/' . $this->getImage();
-    }
-
 
     public function uploadArticleImage(UploadedFile $uploadedFile): string
     {
         $destination = $this->uploadsPath . '/' . self::ARTICLE_IMAGE;
+
         $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
         $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+
         $uploadedFile->move(
             $destination,
             $newFilename
         );
         return $newFilename;
+    }
+
+    public function getPublicPath(string $path): string
+    {
+        return $this->requestStackContext
+            ->getBasePath() . '/uploads/' . $path;
     }
 }

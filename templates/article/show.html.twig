@@ -11,24 +11,68 @@
             <h1 class="uk-article-title">
                 <a class="uk-link-reset" href="">{{ article.title }}</a>
             </h1>
+            <div class="uk-column1-2">
+                <div>
+                    <p class="uk-article-meta">
+                        écrit par <em>{{ article.author.username|upper }}</em>
+                    </p>
+                    <p class="uk-article-meta">
+                        Le {{ article.createdAt|date('d/m/Y à H:i')}}
+                    </p>
+                </div>
+                <div>
+                    {% if article.comments is empty %}
+                    {% else %}
+                    {{article.comments|length}}
+                    {% endif %}
+                </div>
+            </div>
 
-            <p class="uk-article-meta">
-                écrit par <em>{{ article.author.username|upper }}</em>
-            </p>
-            <p class="uk-article-meta">
-                Le {{ article.createdAt|date('d/m/Y à H:i')}}
-            </p>
-            <p class="uk-text-lead">{{ article.content|raw}}</p>
+            <p>{{ article.content|e }}</p>
         </article>
 
-        <div class="uk-margin"> <a class="uk-button uk-button-text" href="{{ path('article_index') }}">back to
-                list</a>
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">retour à la
+                liste
+            </a>
             {% if is_granted('ROLE_USER') %}
             <a class="uk-margin-left" href="{{ path('article_edit', {'id': article.id}) }}">
                 <span uk-icon="icon: file-edit"></span>
             </a>
             {{ include('article/_delete_form.html.twig') }}
             {% endif %}
+        </div>
+        <hr>
+        <div class="container">
+            <h3>Commentaires</h3>
+            <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                {% if article.comments|length >0 %}
+                <div>
+                    {% for comment in article.comments %}
+                    <article class="uk-comment">
+                        <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                            <div class="uk-width-expand">
+                                <h4 class="uk-comment-title uk-margin-remove">{{comment.author}} a dit :</h4>
+                                <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                    <li>{{comment.createdAt|date('d/m/Y à H:i')}}</li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="uk-comment-body">
+                            <p>{{ comment.content}}</p>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="uk-text-lead">Pas encore de commentaires pour cet article</p>
+                {% endif %}
+
+                <div>
+                    <p class="uk-text-lead">Ajouter un commentaire</p>
+                    {% include "article/_commentForm.html.twig" %}
+                </div>
+            </div>
         </div>
 
 

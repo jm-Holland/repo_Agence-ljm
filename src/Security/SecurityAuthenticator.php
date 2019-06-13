@@ -85,7 +85,7 @@ class SecurityAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('article_index'));
+        return new RedirectResponse($this->urlGenerator->generate('admin_index'));
         throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 

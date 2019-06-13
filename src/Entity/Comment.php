@@ -24,8 +24,8 @@ class Comment
      * @Assert\Length(
      *      min = 2,
      *      max = 50,
-     *      minMessage = "Votre pseudo doit avoie au minimum {{ limit }} caractères",
-     *      maxMessage = "Votre pseudo ne doit pas excèder plus de  {{ limit }} caractères."
+     *      minMessage = "Votre pseudo doit avoir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre pseudo ne doit pas excèder plus de {{ limit }} caractères."
      * )
      */
     private $author;

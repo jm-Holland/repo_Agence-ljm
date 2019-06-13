@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Service\UploaderHelper;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+
 
 /**
  * @Route("/article")
@@ -61,12 +64,24 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article_show", methods={"GET"})
+     * @Route("/{id}", name="article_show", methods={"GET","POST"})
      */
-    public function show(Article $article): Response
+    public function show(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $comment = new comment();
+        $article->addComment($comment);
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            return $this->redirectToRoute('article_show', [
+                'id' => $article->getId(),
+            ]);
+        }
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'form' => $form->createView()
         ]);
     }
 

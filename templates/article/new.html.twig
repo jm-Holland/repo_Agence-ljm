@@ -8,8 +8,10 @@
         <h1>Create new Article</h1>
 
         {{ include('article/_form.html.twig') }}
+        <div class="uk-margin-bottom uk-margin-top">
+            <a class="uk-button uk-button-link" href="{{ path('article_index') }}">back to list</a>
+        </div>
 
-        <a href="{{ path('article_index') }}">back to list</a>
     </div>
 </div>
 {% endblock %}

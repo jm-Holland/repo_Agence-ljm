@@ -83,7 +83,7 @@ class ArticleController extends AbstractController
 
             $uploadedFile = $form['image']->getData();
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                $newFilename =  $uploaderHelper->uploadArticleImage($uploadedFile);
                 $article->setImageFilename($newFilename);
             }
             $entityManager->persist($article);

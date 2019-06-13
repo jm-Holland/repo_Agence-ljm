@@ -1,7 +1,10 @@
 {{ form_start(form) }}
 <form action="" method="post" enctype="multipart/form-data" class="uk-form-stacked">
     {# upload Image#}
+    {% if article.image is empty %}
+    {% else %}
     <img src="{{ asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img />
+    {% endif %}
     <div class="uk-margin">
         <label class="uk-form-label">Sélectionner une image</label>
 
@@ -33,7 +36,7 @@
         </div>
     </div>
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="uk-button uk-button-primary uk-border-rounded">{{ button_label|default('Save') }}</button>
 </form>
 
 {{ form_end(form) }}

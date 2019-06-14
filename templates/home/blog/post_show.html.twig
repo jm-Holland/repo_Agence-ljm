@@ -1,51 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-alternative.html.twig' %}
 
 {% block title %}Article {{article.title}}{% endblock %}
 
 {% block body %}
-<section class="uk-section ">
+<section class="uk-section section-solo">
     <div class="uk-container">
-        <h1>Article</h1>
-
         <article class="uk-article">
-            <img data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
-            <h1 class="uk-article-title">
-                <a class="uk-link-reset" href="">{{ article.title }}</a>
-            </h1>
-            <a href="{{path('blog_index')}}">Retour à la liste des articles</a>
-            <div class="uk-column1-2">
-                <div>
-                    <p class="uk-article-meta">
-                        écrit par <em>{{ article.author.username|upper }}</em>
-                    </p>
-                    <p class="uk-article-meta">
-                        Le {{ article.createdAt|date('d/m/Y à H:i')}}
-                    </p>
-                </div>
-                <div>
-                    {% if article.comments is empty %}
-                    {% else %}
-                    <p class="uk-article-meta">Nombres de commentaires: {{article.comments|length}}</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <p>{{ article.content|e }}</p>
+            <h1 class="uk-article-title uk-margin">{{ article.title }}</h1>
+            <ul class="uk-breadcrumb uk-margin-remove">
+                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: calendar"></span> {{ article.createdAt|date('d/m/Y à H:i')}}</p></li>
+                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: pencil"></span> {{ article.author.username|upper }}</p></li>
+                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: comment"></span> {{article.comments|length}}</p></li>
+                {% if is_granted('ROLE_USER') %}
+                <li><p class="uk-article-meta"><a href="{{ path('article_edit',{'id': article.id})}}"><span uk-icon="icon: file-edit"></span></a></li>
+                <li><p class="uk-article-meta"><a href="#delete-confirm" uk-toggle><span uk-icon="icon: trash"></span></a></li>
+                    <div id="delete-confirm" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
+                            <div class="uk-text-center">
+                            <form method="post" action="{{ path('article_delete', {'id': article.id}) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                <button class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
+                            </form>
+                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </ul>
+            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+            <p>{{ article.content|raw }}</p>
         </article>
-        <div class="uk-margin">
-            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">retour à la
-                liste
-            </a>
 
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('blog_index') }}">Retour au blog</a>
         </div>
+
         <hr>
+
         <div class="container">
             <h3>Commentaires</h3>
             <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
                 {% if article.comments|length >0 %}
                 <div>
                     {% for comment in article.comments %}
-                    <article class="uk-comment">
+                    <article class="uk-comment uk-margin">
                         <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                             <div class="uk-width-expand">
                                 <h4 class="uk-comment-title uk-margin-remove">{{comment.author|e}}</h4>
@@ -58,10 +58,11 @@
                             <p>{{ comment.content|e}}</p>
                         </div>
                     </article>
+                        <hr>
                     {% endfor %}
                 </div>
                 {% else %}
-                <p class="uk-text-lead">Pas encore de commentaires pour cet article</p>
+                <p>Pas encore de commentaires pour cet article</p>
                 {% endif %}
                 <div>
                     <p class="uk-text-lead">Ajouter un commentaire</p>
@@ -69,6 +70,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 {% endblock %}

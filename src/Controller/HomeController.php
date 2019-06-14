@@ -31,7 +31,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/articles",methods={"GET"}, name="blog_index")
      */
-    public function bloc_index(ArticleRepository $articles): Response
+    public function blog_index(ArticleRepository $articles): Response
     {
         return $this->render('home/blog/index.html.twig', [
             'articles' => $articles->findAll()

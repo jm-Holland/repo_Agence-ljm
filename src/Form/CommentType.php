@@ -17,12 +17,14 @@ class CommentType extends AbstractType
             ->add('author', TextType::class, [
                 'attr' => [
                     'class' => 'uk-input'
-                ]
+                ],
+                'label' => 'Pseudo :'
             ])
             ->add('content', TextareaType::class, [
                 'attr' => [
                     'class' => 'uk-textarea'
-                ]
+                ],
+                'label' => 'Commentaire :',
             ]);
     }
 

@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6,
-a {
+a, .uk-button-text {
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -168,6 +168,15 @@ a.uk-text-small {
     font-family: 'Quicksand', sans-serif;
 }
 
+.uk-article-meta strong{
+    margin: 0 5px;
+    font-size: 1rem;
+}
+.uk-breadcrumb>:last-child>*{
+    color: #999 !important;
+}
+
+
 
 
 /* Modification propre agence l2J*/
@@ -199,7 +208,9 @@ a.uk-text-small {
     min-width: 360px;
     margin: 0 auto;
 }
-
+.section-solo{
+    padding-top: 40px !important;
+}
 footer .uk-container {
     padding-top: 20px
 }

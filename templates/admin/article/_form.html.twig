@@ -3,7 +3,7 @@
     {# upload Image#}
     {% if article.image is empty %}
     {% else %}
-    <img data-src="{{uploaded_asset('article.imagePath')}}" uk-img>
+    <img data-src="{{ uploaded_asset(article.imagePath) }}" uk-img>
     {% endif %}
     <div class="uk-margin">
         <label class="uk-form-label">Sélectionner une image</label>
@@ -36,7 +36,7 @@
         </div>
     </div>
     {{ form_widget(form) }}
-    <button class="uk-button uk-button-primary uk-border-rounded">{{ button_label|default('Save') }}</button>
+    <button class="uk-button uk-button-primary uk-border-rounded">{{ button_label|default('Valider') }}</button>
 </form>
 
 {{ form_end(form) }}

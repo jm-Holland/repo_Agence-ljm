@@ -33,7 +33,7 @@ class ArticleType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 'attr' => [
-                    'class' => 'uk-textarea trumbowyg'
+                    'class' => 'uk-textarea ckeditor'
                 ]
             ]);
     }

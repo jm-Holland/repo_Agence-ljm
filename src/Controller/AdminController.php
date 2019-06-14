@@ -32,7 +32,7 @@ class AdminController extends AbstractController
      */
     public function listeArticles(ArticleRepository $articles)
     {
-        return $this->render('admin/listeArticle.html.twig', [
+        return $this->render('admin/liste_article.html.twig', [
             'articles' => $articles->findAll()
         ]);
     }
@@ -42,7 +42,7 @@ class AdminController extends AbstractController
      */
     public function listeComments(CommentRepository $comments)
     {
-        return $this->render('admin/listeComment.html.twig', [
+        return $this->render('admin/liste_comment.html.twig', [
             'comments' => $comments->findAll()
         ]);
     }

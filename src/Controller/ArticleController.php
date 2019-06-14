@@ -69,10 +69,11 @@ class ArticleController extends AbstractController
     public function show(Article $article, Request $request, EntityManagerInterface $entityManager): Response
     {
         $comment = new comment();
-        $article->addComment($comment);
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->addComment($comment);
             $entityManager->persist($comment);
             $entityManager->flush();
             return $this->redirectToRoute('article_show', [

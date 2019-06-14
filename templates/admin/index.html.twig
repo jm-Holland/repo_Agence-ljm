@@ -1,10 +1,9 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}DashBoard{% endblock %}
 
 {% block body %}
 <section class="uk-section">
-
     <h1 class="uk-margin-left">DashBoard</h1>
     <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
         <div>
@@ -49,10 +48,16 @@
                         {% for article in articles %}
                         <tr>
                             <td>{{article.id}}</td>
-                            <td>{{article.title}}</td>
+                            <td><a href="{{ path('article_show',{'id': article.id})}}">{{article.title}}</a></td>
                             <td>{{article.author.username}}</td>
-                            <td><img data-src="{{uploaded_asset(article.imagePath)}}" width="150" height="150" alt=""
-                                    uk-img></td>
+                            <td>
+                                <a href="{{ path('article_show',{'id': article.id})}}">
+                                    <img id="img-table-dashboard" data-src="{{uploaded_asset(article.imagePath)}}"
+                                        alt="{{ article.captionImage }}" uk-img>
+                                </a>
+                            </td>
+                            <td><a href="{{ path('article_edit',{'id': article.id})}}"><span
+                                        uk-icon="icon: file-edit"></span></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

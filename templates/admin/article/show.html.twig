@@ -1,0 +1,43 @@
+{% extends "admin_base.html.twig" %}
+
+{% block title %}Article {{article.title}}{% endblock %}
+
+{% block body %}
+
+<section class="uk-section ">
+    <div class="uk-container">
+        <h1>Article</h1>
+
+        <article class="uk-article">
+            <img data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+            <h1 class="uk-article-title">
+                <a class="uk-link-reset" href="">{{ article.title }}</a>
+            </h1>
+            <div class="uk-column1-2">
+                <div>
+                    <p class="uk-article-meta">
+                        écrit par <em>{{ article.author.username|upper }}</em>
+                    </p>
+                    <p class="uk-article-meta">
+                        Le {{ article.createdAt|date('d/m/Y à H:i')}}
+                    </p>
+                </div>
+                <div>
+                    {% if article.comments is empty %}
+                    {% else %}
+                    <p class="uk-article-meta">Nombres de commentaires: {{article.comments|length}}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <p>{{ article.content|e }}</p>
+        </article>
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">retour à la
+                liste
+            </a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

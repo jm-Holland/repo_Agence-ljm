@@ -1,11 +1,15 @@
 <section id="blog-section" class="uk-section uk-section-secondary">
     <div class="uk-container">
         <h2 class="uk-text-center">Nos derniers articles</h2>
+        {% if articles is empty %}
+        <p>No records found</p>
+        {% else %}
+
         <div class="uk-child-width-1-3@m uk-child-width-1-2@s uk-margin uk-text-center"
             uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid>
             {% for article in articles %}
             <div>
-                <a href="{{ path('article_show',{'id': article.id})}}" class=" uk-link-toggle">
+                <a href="{{ path('blog_show',{'id': article.id})}}" class=" uk-link-toggle">
                     <img class="uk-border-rounded" src="{{uploaded_asset(article.imagePath)}}" alt="Article 1">
                     <h3 class="uk-link-heading">{{ article.title }}</h3>
                 </a>
@@ -13,9 +17,11 @@
             {% endfor %}
 
         </div>
+
+        {% endif %}
         <div class="blog-button">
-            <a href="{{ path('article_index')}}"><button
-                    class="uk-button uk-button-primary  uk-align-center uk-margin uk-border-rounded">Accéder au
+            <a href="{{ path('blog_index')}}"><button
+                    class="uk-button-front uk-button-primary  uk-align-center uk-margin uk-border-rounded">Accéder au
                     blog</button></a>
         </div>
     </div>

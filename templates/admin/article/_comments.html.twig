@@ -1,0 +1,30 @@
+{% extends "admin_base.html.twig" %}
+{% block title %}Liste de commentaires{% endblock %}
+
+{% block body %}
+<section class="uk-section">
+    <div class="uk-container">
+        <h1>Liste des commentaires</h1>
+
+        <table class="uk-table uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>date</th>
+                    <th>Commentaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for comment in comments %}
+                    <td>{{comment.author}}</td>
+                    <td>{{comment.createdAt|date('d-m-Y à H:i')}}</td>
+                    <td>{{comment.content}}</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

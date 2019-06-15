@@ -8,37 +8,62 @@
         <article class="uk-article">
             <h1 class="uk-article-title uk-margin">{{ article.title }}</h1>
             <ul class="uk-breadcrumb uk-margin-remove">
-                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: calendar"></span> {{ article.createdAt|date('d/m/Y à H:i')}}</p></li>
-                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: pencil"></span> {{ article.author.username|upper }}</p></li>
-                <li class="uk-disabled"><p class="uk-article-meta"><span uk-icon="icon: comment"></span> {{article.comments|length}}</p></li>
+                <li class="uk-disabled">
+                    <p class="uk-article-meta">
+                        <span uk-icon="icon: calendar"></span>
+                        {{ article.createdAt|date('d/m/Y à H:i')}}
+                    </p>
+                </li>
+                <li class="uk-disabled">
+                    <p class="uk-article-meta">
+                        <span uk-icon="icon: pencil"></span>
+                        {{ article.author.username|upper }}
+                    </p>
+                </li>
+                <li class="uk-disabled">
+                    <p class="uk-article-meta">
+                        <span uk-icon="icon: comment"></span>
+                        {{article.comments|length}}
+                    </p>
+                </li>
                 {% if is_granted('ROLE_USER') %}
-                <li><p class="uk-article-meta"><a href="{{ path('article_edit',{'id': article.id})}}"><span uk-icon="icon: file-edit"></span></a></li>
-                <li><p class="uk-article-meta"><a href="#delete-confirm" uk-toggle><span uk-icon="icon: trash"></span></a></li>
-                    <div id="delete-confirm" uk-modal>
-                        <div class="uk-modal-dialog uk-modal-body">
-                            <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
-                            <div class="uk-text-center">
-                            <form method="post" action="{{ path('article_delete', {'id': article.id}) }}">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                <button class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
-                            </form>
-                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
-                            </div>
+                <li>
+                    <p class="uk-article-meta">
+                        <a href="{{ path('article_edit',{'id': article.id})}}">
+                            <span uk-icon="icon: file-edit"></span>
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <p class="uk-article-meta">
+                        <a href="#delete-confirm" uk-toggle>
+                            <span uk-icon="icon: trash"></span>
+                        </a>
+                    </p>
+                </li>
+                <div id="delete-confirm" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
+                        <div class="uk-text-center">
+                            {% include "admin/article/_delete_form.html.twig" %}
+                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">
+                                Annuler
+                            </button>
                         </div>
                     </div>
+                </div>
                 {% endif %}
             </ul>
-            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="{{ uploaded_asset(article.imagePath) }}"
+                alt="{{article.captionImage}}" uk-img>
             <p>{{ article.content|raw }}</p>
         </article>
-
         <div class="uk-margin">
-            <a class="uk-button uk-button-text" href="{{ path('blog_index') }}">Retour au blog</a>
+            <a class="uk-button uk-button-text" href="{{ path('blog_index') }}">
+                Retour au blog
+            </a>
         </div>
-
         <hr>
-
         <div class="container">
             <h3>Commentaires</h3>
             <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
@@ -48,29 +73,32 @@
                     <article class="uk-comment uk-margin">
                         <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                             <div class="uk-width-expand">
-                                <h4 class="uk-comment-title uk-margin-remove">{{comment.author|e}}</h4>
+                                <h4 class="uk-comment-title uk-margin-remove">
+                                    {{ comment.author }}
+                                </h4>
                                 <p class="uk-comment-meta  uk-margin-remove-top">
-                                    {{article.createdAt|date('d/m/Y à H:i')}}
+                                    {{ article.createdAt|date('d/m/Y à H:i') }}
                                 </p>
                             </div>
                         </header>
                         <div class="uk-comment-body">
-                            <p>{{ comment.content|e}}</p>
+                            <p>{{ comment.content|raw }}</p>
                         </div>
                     </article>
-                        <hr>
+                    <hr>
                     {% endfor %}
                 </div>
                 {% else %}
-                <p>Pas encore de commentaires pour cet article</p>
+                <p>Soyez le premier à commenter cet article!</p>
                 {% endif %}
                 <div>
-                    <p class="uk-text-lead">Ajouter un commentaire</p>
+                    <p class="uk-text-lead">
+                        Ajouter un commentaire
+                    </p>
                     {% include "home/blog/_comment_form.html.twig" %}
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 {% endblock %}

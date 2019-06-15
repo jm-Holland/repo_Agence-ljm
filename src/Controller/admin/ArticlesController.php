@@ -33,7 +33,6 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/article/new", name="article_new", methods={"GET","POST"})
      * @param Request $request
@@ -55,14 +54,12 @@ class ArticlesController extends AbstractController
                 $article->setImage($newFilename);
             }
 
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
-
+            $this->addFlash('success', "Votre article a bien été enregistré!");
             return $this->redirectToRoute('article_index');
         }
-
         return $this->render('admin/article/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
@@ -86,12 +83,11 @@ class ArticlesController extends AbstractController
     /**
      * @Route("/article/{id}/edit", name="article_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param EntityManagerInterface $entityManager
      * @param Article $article
      * @param UploaderHelper $uploaderHelper
      * @return Response
      */
-    public function edit(Request $request, EntityManagerInterface $entityManager, Article $article, UploaderHelper $uploaderHelper): Response
+    public function edit(Request $request, Article $article, UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -103,22 +99,20 @@ class ArticlesController extends AbstractController
                 $newFilename =  $uploaderHelper->uploadArticleImage($uploadedFile);
                 $article->setImageFilename($newFilename);
             }
-            $entityManager->persist($article);
-            $entityManager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
             $this->addFlash('success', 'Article mise à jour');
 
             return $this->redirectToRoute('article_show', [
                 'id' => $article->getId(),
             ]);
         }
-
-
         return $this->render('admin/article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/article/{id}/delete", name="article_delete", methods={"DELETE"})

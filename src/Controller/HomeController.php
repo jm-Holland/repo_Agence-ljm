@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\CommentType;
@@ -11,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * @Route("/")

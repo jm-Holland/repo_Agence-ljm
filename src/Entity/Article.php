@@ -67,7 +67,13 @@ class Article
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article")
+     * @ORM\OneToMany(
+     *      targetEntity="App\Entity\Comment",
+     *      mappedBy="article",
+     *      orphanRemoval=true,
+     *      cascade={"persist"}
+     * )
+     * @ORM\OrderBy({"createdAt": "DESC"})
      */
     private $comments;
 

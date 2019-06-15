@@ -5,10 +5,8 @@ namespace App\Controller\admin;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\UploaderHelper;
-use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  * @Route("/admin")
  * @IsGranted("ROLE_USER")
  */
-class ArticlesController extends AbstractController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/dashboard/articles", name="article_index")

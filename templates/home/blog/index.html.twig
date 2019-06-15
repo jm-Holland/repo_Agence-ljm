@@ -15,16 +15,21 @@
                     </div>
                     <div class="uk-card-header">
                         <div class="uk-grid-small uk-flex-middle" uk-grid>
-
                             <div class="uk-width-expand">
                                 <h3 class="uk-card-title uk-margin-remove-bottom">{{article.title}}</h3>
                                 <p class="uk-article-meta uk-margin-remove"><span uk-icon="icon: calendar"></span>
                                     {{ article.createdAt|date('d/m/Y à H:i')}}</p>
-                                <p class="uk-article-meta uk-margin-remove"><span uk-icon="icon: pencil"></span>
-                                    {{ article.author.username|upper }}</p>
-                                </li>
-                                <p class="uk-article-meta uk-margin-remove"><span uk-icon="icon: comment"></span>
-                                    {{article.comments|length}}</p>
+                                <ul class="uk-breadcrumb uk-margin-remove">
+                                    <li class="uk-disabled">
+                                        <p class="uk-article-meta uk-margin-remove"><span uk-icon="icon: pencil"></span>
+                                            {{ article.author.username|upper }}</p>
+                                    </li>
+                                    <li class="uk-disabled">
+                                        <p class="uk-article-meta uk-margin-remove"><span
+                                                uk-icon="icon: comment"></span>
+                                            {{article.comments|length}}</p>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

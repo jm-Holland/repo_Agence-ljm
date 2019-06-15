@@ -45,6 +45,13 @@
                         Contact
                     </a>
                 </li>
+                {% if is_granted('ROLE_USER') %}
+                <li>
+                    <a href="{{ path ('admin_index') }}">
+                        Dashboard
+                    </a>
+                </li>
+                {% endif %}
             </ul>
             <div class="uk-navbar-item">
                 <a href="" uk-icon="icon: instagram"></a>
@@ -92,6 +99,13 @@
                     Contact
                 </a>
             </li>
+            {% if is_granted('ROLE_USER') %}
+                <li>
+                    <a href="{{ path ('admin_index') }}">
+                        Dashboard
+                    </a>
+                </li>
+            {% endif %}
         </ul>
         <div class="uk-navbar-item">
             <a href="" uk-icon="icon: instagram"></a>

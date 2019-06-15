@@ -67,20 +67,6 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id}", methods={"GET"}, name="article_show")
-     * @param Article $article
-     * @return Response
-     */
-    public function show(Article $article): Response
-    {
-
-        return $this->render('admin/article/show.html.twig', [
-            'article' => $article,
-
-        ]);
-    }
-
-    /**
      * @Route("/article/{id}/edit", name="article_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Article $article

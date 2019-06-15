@@ -176,6 +176,12 @@ a.uk-text-small {
     color: #999 !important;
 }
 
+.uk-button{
+    font-size: 0.875rem;
+}
+.button-large{
+    font-size: 1.5rem !important;
+}
 
 
 

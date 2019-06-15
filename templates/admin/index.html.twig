@@ -3,11 +3,11 @@
 {% block title %}DashBoard{% endblock %}
 
 {% block body %}
-<section class="uk-section">
+    <section class="uk-section uk-section-default section-solo">
     <h1 class="uk-margin-left">DashBoard</h1>
     <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
         <div>
-            <div class="uk-background-muted uk-padding">
+            <div class="uk-padding">
                 <h3>Utilisateurs</h3>
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>
@@ -23,7 +23,19 @@
                             <td>
                                 <a href="{{ path('user_edit', {'id': user.id}) }}"><span
                                         uk-icon="icon: file-edit"></span></a>
-                                {{ include('admin/user/_delete_form.html.twig') }}
+                                <a href="#delete-user-confirm" uk-toggle><span uk-icon="icon: trash"></span></a>
+                                <div id="delete-user-confirm" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body">
+                                        <p class="uk-text-center">Voulez vous vraiment supprimer cet utilisateur ?</p>
+                                        <div class="uk-text-center">
+                                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                                <button class="uk-button uk-button-danger">Supprimer</button>
+                                            </form>
+                                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                                        </div>
+                                    </div>
                             </td>
                         </tr>
                         {% endfor %}
@@ -32,7 +44,7 @@
             </div>
         </div>
         <div>
-            <div class="uk-background-primary uk-padding uk-light">
+            <div class="uk-padding">
                 <h3>Article</h3>
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>
@@ -48,16 +60,31 @@
                         {% for article in articles %}
                         <tr>
                             <td>{{article.id}}</td>
-                            <td><a href="{{ path('article_show',{'id': article.id})}}">{{article.title}}</a></td>
+                            <td><a href="{{ path('blog_show',{'id': article.id})}}">{{article.title}}</a></td>
                             <td>{{article.author.username}}</td>
                             <td>
-                                <a href="{{ path('article_show',{'id': article.id})}}">
+                                <a href="{{ path('blog_show',{'id': article.id})}}">
                                     <img id="img-table-dashboard" data-src="{{uploaded_asset(article.imagePath)}}"
                                         alt="{{ article.captionImage }}" uk-img>
                                 </a>
                             </td>
-                            <td><a href="{{ path('article_edit',{'id': article.id})}}"><span
-                                        uk-icon="icon: file-edit"></span></a></td>
+                            <td>
+                                <a href="{{ path('article_edit',{'id': article.id})}}"><span
+                                        uk-icon="icon: file-edit"></span></a>
+                                <a href="#delete-post-confirm" uk-toggle><span uk-icon="icon: trash"></span></a>
+                                <div id="delete-post-confirm" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body">
+                                        <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
+                                        <div class="uk-text-center">
+                                            <form method="post" action="{{ path('article_delete', {'id': article.id}) }}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                                                <button class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
+                                            </form>
+                                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                                        </div>
+                                    </div>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -65,7 +92,7 @@
             </div>
         </div>
         <div>
-            <div class="uk-background-secondary uk-padding uk-light">
+            <div class="uk-padding">
                 <h3>Commentaires</h3>
                 <table class="uk-table uk-table-hover uk-table-divider">
                     <thead>

@@ -3,7 +3,7 @@
     <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="{{ path('admin_index')}}">
-                <img id="logo_admin" data-src="{{asset('img/Logos_ljm/Logo_Hpc_1.png')}}"
+                <img id="logo_admin" data-src="{{asset('img/Logos_ljm/Logo_Hpb_1.png')}}"
                     alt="logo du dashboard agence LJM" uk-img>
             </a>
         </div>
@@ -28,6 +28,11 @@
                         Commentaires
                     </a>
                 </li>
+                <li>
+                    <a href="{{ path('home_index') }}">
+                        Retour à l'accueil
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -49,7 +54,15 @@
                     Articles
                 </a>
             </li>
-
+            <li>
+                <a href="{{ path('comment_index')}}">
+                    Commentaires
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('home_index') }}">
+                    Retour à l'accueil
+                </a>
             </li>
         </ul>
         <div class="uk-navbar-item">

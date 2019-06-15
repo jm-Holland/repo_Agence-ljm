@@ -24,7 +24,6 @@ class ArticleType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'mapped' => false,
-                'required' => false,
             ])
             ->add('captionImage', TextType::class, [
                 'attr' => [

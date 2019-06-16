@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/dashboard/articles", name="article_index")
+     * @Route("/articles", name="article_index")
      * @param ArticleRepository $articles
      * @return Response
      */

@@ -1,9 +1,9 @@
 {{ form_start(form) }}
 <form action="" method="post" enctype="multipart/form-data" class="uk-form-stacked">
     {# upload Image#}
-    {% if article.image is empty %}
+    {% if reference.image is empty %}
     {% else %}
-    <img data-src="/uploads/articles_images/{{ article.image }}" uk-img>
+        <img data-src="/uploads/references_images/{{ reference.image }}" uk-img>
     {% endif %}
     <div class="uk-margin">
         <label class="uk-form-label">Sélectionner une image</label>
@@ -12,26 +12,41 @@
             {{form_row(form.imageFile)}}
         </div>
     </div>
-    {# captionImage #}
     <div class="uk-margin">
         <label class="uk-form-label">Description de l'image</label>
         <div class="uk-form-controls">
             {{form_widget(form.captionImage)}}
         </div>
     </div>
-    {# title of article #}
     <div class="uk-margin">
-        <label class="uk-form-label">Titre</label>
+        <label class="uk-form-label">Hauteur de l'image</label>
         <div class="uk-form-controls">
-            {{form_widget(form.title)}}
+            {{form_widget(form.imageHeight)}}
         </div>
     </div>
-    {# Content of article #}
+    <div class="uk-margin">
+        <label class="uk-form-label">Nom</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.name)}}
+        </div>
+    </div>
+    <div class="uk-margin">
+        <label class="uk-form-label">Client</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.customer)}}
+        </div>
+    </div>
+    <div class="uk-margin">
+        <label class="uk-form-label">Lien</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.link)}}
+        </div>
+    </div>
     <div>
         <div class="uk-margin">
-            <label class="uk-form-label">Contenu</label>
+            <label class="uk-form-label"Mission</label>
             <div class="uk-form-controls">
-                {{form_widget(form.content)}}
+                {{form_widget(form.mission)}}
             </div>
         </div>
     </div>

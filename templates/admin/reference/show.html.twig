@@ -1,0 +1,53 @@
+{% extends "admin_base.html.twig" %}
+
+{% block title %}Article {{reference.name}}{% endblock %}
+
+{% block body %}
+    <section class="uk-section ">
+        <div class="uk-container">
+            <reference class="uk-reference">
+                <h1 class="uk-reference-title uk-margin">{{ reference.name }}</h1>
+                <ul class="uk-breadcrumb uk-margin-remove">
+                    <li class="uk-disabled">
+                        <p class="uk-reference-meta"><span uk-icon="icon: calendar"></span>
+                            {{ reference.createdAt|date('d/m/Y à H:i')}}</p>
+                    </li>
+                    <li>
+                        <p class="uk-reference-meta">
+                            <a href="{{ path('reference_edit',{'id': reference.id})}}">
+                                <span uk-icon="icon: file-edit"></span>
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="uk-reference-meta">
+                            <a href="#delete-confirm" uk-toggle>
+                                <span uk-icon="icon: trash"></span>
+                            </a>
+                        </p>
+                    </li>
+                    <div id="delete-confirm" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <p class="uk-text-center">
+                                Voulez vous vraiment supprimer cet reference ?
+                            </p>
+                            <div class="uk-text-center">
+                                {% include "admin/reference/_delete_form.html.twig" %}
+                                <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                        type="button">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+                <p>Client : {{ reference.customer }}</p>
+                <p>Lien : {{ reference.link }}</p>
+                <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="/uploads/references_images/{{ reference.image }}"
+                     alt="{{reference.captionImage}}" uk-img>
+                <p>{{ reference.mission|raw }}</p>
+            </reference>
+            <div class="uk-margin">
+                <a class="uk-button uk-button-text" href="{{ path('reference_index') }}">Retour au blog</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Editer la référence{% endblock %}
+
+{% block body %}
+    <div class="section uk-section">
+        <div class="uk-container">
+            <h1>Editer la référence</h1>
+
+            {{ include('admin/reference/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('reference_index') }}">Retour à la liste des références</a>
+        </div>
+    </div>
+{% endblock %}

@@ -18,4 +18,13 @@ class ReferenceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reference::class);
     }
+
+    public function findLast($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->orderBy('r.createdAt', 'DESC')
+            ->setMaxResults($value)
+            ->getQuery()
+            ->getResult();
+    }
 }

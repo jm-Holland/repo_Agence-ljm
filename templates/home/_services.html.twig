@@ -4,7 +4,7 @@
         <div class="uk-child-width-1-5@l uk-child-width-1-2@s"
             uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid>
             {% if services is empty %}
-            <p>Aucune service n'a été trouvé</p>
+            <p>Aucun service n'a été trouvé</p>
             {% else %}
             {% for service in services %}
             <div>
@@ -14,7 +14,7 @@
                             alt="{{ service.captionImage }}" uk-img>
                     </div>
                     <h3 class="uk-text-center uk-link-heading">{{ service.title }}</h3>
-                    <p class="uk-text-center">{{ service.description }}</p>
+                    <div class="uk-text-center">{{ service.description|raw }}</div>
                 </a>
             </div>
             {% endfor %}

@@ -22,7 +22,8 @@ class ArticleType extends AbstractType
                 ]
             ])
             ->add('imageFile', FileType::class, [
-                'required' => false
+                'required' => false,
+                'label' => ' '
             ])
             ->add('captionImage', TextType::class, [
                 'attr' => [

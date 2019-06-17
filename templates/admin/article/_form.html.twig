@@ -6,10 +6,9 @@
     <img data-src="/uploads/articles_images/{{ article.image }}" uk-img>
     {% endif %}
     <div class="uk-margin">
-        <label class="uk-form-label">Sélectionner une image</label>
-
-        <div class="uk-form-controls">
+        <div class="js-upload" uk-form-custom>
             {{form_row(form.imageFile)}}
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">Sélectionner une image</button>
         </div>
     </div>
     {# captionImage #}

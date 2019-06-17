@@ -1,4 +1,4 @@
-# AGENCE WEB Multimédia L2J
+# AGENCE WEB Multimédia LJM
 
 Création d'une agence Web multimédia pour le P-5 OpenClassRooms
 
@@ -6,18 +6,18 @@ date codeStart: 28 mai 2019
 
 ## Auteur
 
-* jmh - illaweb35@gmail.com
+ Author      | e-mail |
+| -----------| ----------- |
+| jmh        | illaweb35@gmail.com  |
+| Luke       | lukianos76@gmail.com |
 
-* luke - lukianos76@gmail.com
-
-* Justine- justine.loison.jl@gmail.com
 
 ### Descriptif
 
-Site Vitrine pour l'agence L2J
+Site Vitrine pour l'agence Ljm
 
-outils utilisés:
-
-* Symfony 4.2. _ [symfony](https://symfony.com)
-* UIkit 3  _ [UIkit](https://getuikit.com/)
-* Bitbucket  _ [Bitbucket](https://bitbucket.org)
+outils utilisés | Liens Web|
+|---------------|----------|
+|  [x] Symfony 4.2. |[symfony](https://symfony.com)|
+| [x] UIkit 3 | [UIkit](https://getuikit.com/)|
+| [x] Bitbucket |[Bitbucket](https://bitbucket.org)|

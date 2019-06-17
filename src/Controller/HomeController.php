@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\ReferenceRepository;
+use App\Repository\ServiceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,12 +24,13 @@ class HomeController extends AbstractController
      * @param ReferenceRepository $reference
      * @return Response
      */
-    public function index(ArticleRepository $article, ReferenceRepository $reference): Response
+    public function index(ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
     {
         return $this->render('home/index.html.twig', [
             'articles' => $article->findLast(3),
             'references' => $reference->findLast(5),
-            'allreferences' => $reference->findAll()
+            'allreferences' => $reference->findAll(),
+            'services' => $service->findAll()
         ]);
     }
 

@@ -3,10 +3,17 @@
 {% block title %}Article {{reference.name}}{% endblock %}
 
 {% block body %}
+
     <section class="uk-section ">
         <div class="uk-container">
             <article class="uk-reference">
                 <h1 class="uk-reference-title uk-margin">{{ reference.name }}</h1>
+                {% for message in app.flashes('success') %}
+                    <div class="uk-alert-success" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
                 <ul class="uk-breadcrumb uk-margin-remove">
                     <li class="uk-disabled">
                         <p class="uk-reference-meta"><span uk-icon="icon: calendar"></span>

@@ -3,10 +3,17 @@
 {% block title %}Article {{article.title}}{% endblock %}
 
 {% block body %}
+
 <section class="uk-section ">
     <div class="uk-container">
         <article class="uk-article">
             <h1 class="uk-article-title uk-margin">{{ article.title }}</h1>
+            {% for message in app.flashes('success') %}
+                <div class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
             <ul class="uk-breadcrumb uk-margin-remove">
                 <li class="uk-disabled">
                     <p class="uk-article-meta"><span uk-icon="icon: calendar"></span>

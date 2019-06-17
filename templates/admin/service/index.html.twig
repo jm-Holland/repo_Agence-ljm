@@ -1,0 +1,33 @@
+{% extends "admin_base.html.twig" %}
+
+{% block title %}Liste des services{% endblock %}
+
+{% block body %}
+    <section class="uk-section">
+        <div class="uk-container">
+            <h1>Liste des services</h1>
+            {% for message in app.flashes('success') %}
+                <div class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+
+            <div class="uk-margin">
+                <a class="uk-button uk-button-primary uk-border-rounded uk-align-middle" href="{{ path('service_new') }}">Créer un nouveau service</a>
+            </div>
+
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center"  uk-grid>
+                {% for service in services %}
+                    <div>
+                        <a href="{{ path('service_show',{'id': service.id})}}" class="uk-link-toggle">
+                            <img src="/uploads/services_images/{{ service.image }}" alt="{{service.captionImage}}" uk-img>
+                            <h3 class="uk-link-heading">{{service.title}}</h3>
+                            <p>{{service.description|raw}}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

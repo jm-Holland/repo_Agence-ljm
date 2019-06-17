@@ -1,0 +1,133 @@
+{% for reference in references %}
+    <div id="reference-modal{{ reference.id }}" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+            <div class="uk-container">
+            <article class="uk-article">
+                <h1 class="uk-article-title uk-margin">{{ reference.name }}</h1>
+                <ul class="uk-breadcrumb uk-margin-remove">
+                    <li class="uk-disabled">
+                        <p class="uk-article-meta">
+                            <span uk-icon="icon: user"></span>
+                            {{ reference.customer|upper }}
+                        </p>
+                    </li>
+                    <li>
+                        <a href="{{ reference.link }}" class="uk-article-meta">
+                            <span uk-icon="icon: link"></span>
+                            {{ reference.link }}
+                        </a>
+                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li>
+                            <p class="uk-article-meta">
+                                <a href="{{ path('reference_edit',{'id': reference.id})}}">
+                                    <span uk-icon="icon: file-edit"></span>
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="uk-article-meta">
+                                <a href="#delete-confirm" uk-toggle>
+                                    <span uk-icon="icon: trash"></span>
+                                </a>
+                            </p>
+                        </li>
+                        <div id="delete-confirm" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body">
+                                <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
+                                <div class="uk-text-center">
+                                    {% include "admin/reference/_delete_form.html.twig" %}
+                                    <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </ul>
+                <img class="uk-margin uk-border-rounded uk-align-left" data-src="/uploads/references_images/{{ reference.image }}"
+                     alt="{{reference.captionImage}}" uk-img>
+                <p>{{ reference.mission|raw }}</p>
+            </article>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<div id="allreference-modal" class="uk-modal-full" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+        <div class="uk-container">
+            <h2 class="uk-text-center">Nos références</h2>
+            {% if allreferences is empty %}
+                <p>Aucune référence n'a été trouvé</p>
+            {% else %}
+
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid="masonry: true; parallax: 150">
+
+                    {% for reference in allreferences %}
+                        <div>
+                            <div class="uk-flex uk-flex-center ">
+                                <a uk-toggle="target: #reference-modal{{ reference.id }}">
+                                    <div class="uk-inline uk-transition-toggle">
+                                        <img height="{{ reference.imageHeight }}px" class="uk-border-rounded" data-src="/uploads/references_images/{{ reference.image }}" alt="{{ reference.captionImage }}" uk-img>
+                                        <div class="uk-transition-fade uk-overlay uk-overlay-default uk-position-cover uk-flex uk-flex-center uk-flex-middle">
+                                            <p class="uk-text-center uk-h3 uk-margin-remove">{{ reference.name }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for service in services %}
+    <div id="service-modal{{ service.id }}" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+            <div class="uk-container">
+                <article class="uk-article">
+                    <h1 class="uk-article-title uk-margin">{{ service.title }}</h1>
+                    <ul class="uk-breadcrumb uk-margin-remove">
+                        {% if is_granted('ROLE_USER') %}
+                            <li>
+                                <p class="uk-article-meta">
+                                    <a href="{{ path('service_edit',{'id': service.id})}}">
+                                        <span uk-icon="icon: file-edit"></span>
+                                    </a>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="uk-article-meta">
+                                    <a href="#delete-confirm" uk-toggle>
+                                        <span uk-icon="icon: trash"></span>
+                                    </a>
+                                </p>
+                            </li>
+                            <div id="delete-confirm" uk-modal>
+                                <div class="uk-modal-dialog uk-modal-body">
+                                    <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
+                                    <div class="uk-text-center">
+                                        {% include "admin/service/_delete_form.html.twig" %}
+                                        <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">
+                                            Annuler
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </ul>
+                    <img class="uk-margin uk-border-rounded uk-align-left" data-src="/uploads/services_images/{{ service.image }}"
+                         alt="{{service.captionImage}}" uk-img>
+                    <p>{{ service.content|raw }}</p>
+                </article>
+            </div>
+        </div>
+    </div>
+{% endfor %}

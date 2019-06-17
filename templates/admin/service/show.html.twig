@@ -1,0 +1,53 @@
+{% extends "admin_base.html.twig" %}
+
+{% block title %}Service {{service.title}}{% endblock %}
+
+{% block body %}
+
+    <section class="uk-section ">
+        <div class="uk-container">
+            <article class="uk-service">
+                <h1 class="uk-service-title uk-margin">{{ service.title }}</h1>
+                {% for message in app.flashes('success') %}
+                    <div class="uk-alert-success" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+                <ul class="uk-breadcrumb uk-margin-remove">                     <li>
+                        <p class="uk-service-meta">
+                            <a href="{{ path('service_edit',{'id': service.id})}}">
+                                <span uk-icon="icon: file-edit"></span>
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="uk-service-meta">
+                            <a href="#delete-confirm" uk-toggle>
+                                <span uk-icon="icon: trash"></span>
+                            </a>
+                        </p>
+                    </li>
+                    <div id="delete-confirm" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <p class="uk-text-center">
+                                Voulez vous vraiment supprimer cet service ?
+                            </p>
+                            <div class="uk-text-center">
+                                {% include "admin/service/_delete_form.html.twig" %}
+                                <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                        type="button">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+                <img class="uk-align-left uk-margin uk-border-rounded" data-src="/uploads/services_images/{{ service.image }}"
+                     alt="{{service.captionImage}}" uk-img>
+                <p>{{ service.content|raw }}</p>
+            </article>
+            <div class="uk-margin">
+                <a class="uk-button uk-button-text" href="{{ path('service_index') }}">Retour aux services</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

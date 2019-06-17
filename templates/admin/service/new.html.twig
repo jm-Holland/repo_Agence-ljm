@@ -1,0 +1,17 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Nouveau service{% endblock %}
+
+{% block body %}
+    <div class="section-uk-section">
+        <div class="uk-container">
+            <h1>Créer un nouveau service</h1>
+
+            {{ include('admin/service/_form.html.twig') }}
+            <div class="uk-margin-bottom uk-margin-top">
+                <a class="uk-button uk-button-text" href="{{ path('service_index') }}">Retour à la liste des services</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

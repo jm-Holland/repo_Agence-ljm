@@ -9,7 +9,9 @@
 
             {{ include('admin/article/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <a href="{{ path('article_index') }}">Retour à la liste des articles</a>
+            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">Retour à la liste des articles</a>
+            <a class="uk-link-muted">|</a>
+            <a class="uk-button uk-button-text" href="{{ path('home_index') }}#blog">Retour à l'accueil</a>
         </div>
     </div>
 {% endblock %}

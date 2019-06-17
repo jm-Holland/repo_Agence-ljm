@@ -84,7 +84,7 @@ class ArticleController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
-            $this->addFlash('success', 'Article mise à jour');
+            $this->addFlash('success', 'Article mis à jour');
 
             return $this->redirectToRoute('article_show', [
                 'id' => $article->getId(),

@@ -3,10 +3,17 @@
 {% block title %}Article {{article.title}}{% endblock %}
 
 {% block body %}
+
 <section class="uk-section ">
     <div class="uk-container">
         <article class="uk-article">
             <h1 class="uk-article-title uk-margin">{{ article.title }}</h1>
+            {% for message in app.flashes('success') %}
+                <div class="uk-alert-success" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
             <ul class="uk-breadcrumb uk-margin-remove">
                 <li class="uk-disabled">
                     <p class="uk-article-meta"><span uk-icon="icon: calendar"></span>
@@ -51,12 +58,12 @@
                     </div>
                 </div>
             </ul>
-            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="/uploads/articles_images/{{ article.image }}"
+            <img class="uk-align-left uk-width-1-2 uk-margin uk-border-rounded" data-src="/uploads/articles_images/{{ article.image }}"
                 alt="{{article.captionImage}}" uk-img>
             <p>{{ article.content|raw }}</p>
         </article>
         <div class="uk-margin">
-            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">Retour au blog</a>
+            <a class="uk-button uk-button-text" href="{{ path('article_index') }}">Retour aux articles</a>
         </div>
     </div>
 </section>

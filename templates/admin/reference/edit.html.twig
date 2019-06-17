@@ -9,7 +9,9 @@
 
             {{ include('admin/reference/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <a href="{{ path('reference_index') }}">Retour à la liste des références</a>
+            <a class="uk-button uk-button-text" href="{{ path('reference_index') }}">Retour à la liste des références</a>
+            <a class="uk-link-muted">|</a>
+            <a class="uk-button uk-button-text" href="{{ path('home_index') }}#reference">Retour à l'accueil</a>
         </div>
     </div>
 {% endblock %}

@@ -33,9 +33,8 @@ class ReferenceType extends AbstractType
                 ]
             ])
             ->add('imageFile', FileType::class, [
-                'attr' => [
-                    'class' => 'uk-form-file'
-                ]
+                'label' => ' ',
+                'required' => false,
             ])
             ->add('link', UrlType::class, [
                 'attr' => [

@@ -45,7 +45,7 @@ class ReferenceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($reference);
             $em->flush();
-            $this->addFlash('success', "Votre reference a bien été enregistré!");
+            $this->addFlash('success', "Votre référence a bien été enregistrée!");
             return $this->redirectToRoute('reference_index');
         }
         return $this->render('admin/reference/new.html.twig', [
@@ -81,7 +81,7 @@ class ReferenceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($reference);
             $em->flush();
-            $this->addFlash('success', 'Reference mise à jour');
+            $this->addFlash('success', 'Référence mise à jour');
 
             return $this->redirectToRoute('reference_show', [
                 'id' => $reference->getId(),

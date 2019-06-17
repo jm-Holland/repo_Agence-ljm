@@ -5,12 +5,15 @@ namespace App\Entity;
 
 use App\Entity\Tag;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReferenceRepository")
+ * @Vich\Uploadable
  */
 class Reference
 {
@@ -40,10 +43,22 @@ class Reference
     private $mission;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url
-     */
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     **/
     private $image;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="references_images", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -52,13 +67,31 @@ class Reference
     private $link;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="reference")
+     * @ORM\Column(type="datetime")
      */
-    private $tags;
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $imageHeight;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $captionImage;
 
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -126,31 +159,77 @@ class Reference
         return $this;
     }
 
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getImageHeight(): ?int
+    {
+        return $this->imageHeight;
+    }
+
+    public function setImageHeight(int $imageHeight): self
+    {
+        $this->imageHeight = $imageHeight;
+
+        return $this;
+    }
+
+    public function getCaptionImage(): ?string
+    {
+        return $this->captionImage;
+    }
+
+    public function setCaptionImage(string $captionImage): self
+    {
+        $this->captionImage = $captionImage;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|Tag[]
+     * @return File
      */
-    public function getTags(): Collection
+    public function getImageFile()
     {
-        return $this->tags;
+        return $this->imageFile;
     }
 
-    public function addTag(Tag $tag): self
+    /**
+     * @param File $imageFile
+     * @throws \Exception
+     */
+    public function setImageFile(File $imageFile)
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addReference($this);
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
         }
-
         return $this;
     }
 
-    public function removeTag(Tag $tag): self
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removeReference($this);
-        }
+        return $this->updatedAt;
+    }
 
-        return $this;
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

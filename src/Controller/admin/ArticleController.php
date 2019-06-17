@@ -4,7 +4,6 @@ namespace App\Controller\admin;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
-use App\Service\UploaderHelper;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,10 +33,9 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/new", name="article_new", methods={"GET","POST"})
      * @param Request $request
-     * @param UploaderHelper $uploaderHelper
      * @return Response
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper): Response
+    public function new(Request $request): Response
     {
         $article = new Article();
         $article->setAuthor($this->getUser());
@@ -46,12 +44,6 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article = $form->getData();
-            $uploadedFile = $form['image']->getData();
-            if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
-                $article->setImage($newFilename);
-            }
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
@@ -80,21 +72,14 @@ class ArticleController extends AbstractController
      * @Route("/article/{id}/edit", name="article_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Article $article
-     * @param UploaderHelper $uploaderHelper
      * @return Response
      */
-    public function edit(Request $request, Article $article, UploaderHelper $uploaderHelper): Response
+    public function edit(Request $request, Article $article): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $uploadedFile = $form['image']->getData();
-
-            if ($uploadedFile) {
-                $newFilename =  $uploaderHelper->uploadArticleImage($uploadedFile);
-                $article->setImageFilename($newFilename);
-            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();

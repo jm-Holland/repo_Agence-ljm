@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -22,8 +21,8 @@ class ArticleType extends AbstractType
                     'class' => 'uk-input'
                 ]
             ])
-            ->add('image', FileType::class, [
-                'mapped' => false,
+            ->add('imageFile', FileType::class, [
+                'required' => false
             ])
             ->add('captionImage', TextType::class, [
                 'attr' => [

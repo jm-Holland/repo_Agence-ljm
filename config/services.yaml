@@ -5,6 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
+    app.path.articles_images: /uploads/articles_images
+    app.path.references_images: /uploads/references_images
+    app.path.services_images: /uploads/services_images
+
 services:
     # default configuration for services in *this* file
     _defaults:

@@ -133,7 +133,6 @@ a.uk-text-small:focus,
 
 .uk-button-primary {
     background-color: #3ca5c5 !important;
-    min-height: 80px;
 }
 
 .uk-section-secondary .uk-input,
@@ -179,7 +178,7 @@ a.uk-text-small {
 .uk-button{
     font-size: 0.875rem;
 }
-.button-large{
+.uk-button-large{
     font-size: 1.5rem !important;
 }
 

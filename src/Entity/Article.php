@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
-use App\Entity\Comment;
-use App\Service\UploaderHelper;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -40,15 +41,22 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 1200,
-     *     minHeight = 200,
-     *     maxHeight = 1200
-     * )
-     */
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     **/
     private $image;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="articles_images", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -83,18 +91,6 @@ class Article
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-    }
-    public function getImagePath()
-    {
-        return  UploaderHelper::ARTICLE_IMAGE . '/' . $this->getImage();
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -131,11 +127,25 @@ class Article
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile)
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
     public function getContent(): ?string
@@ -157,7 +167,7 @@ class Article
 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -203,5 +213,21 @@ class Article
         $this->captionImage = $captionImage;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

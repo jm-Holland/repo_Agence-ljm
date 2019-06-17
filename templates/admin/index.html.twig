@@ -64,7 +64,7 @@
                             <td>{{article.author.username}}</td>
                             <td>
                                 <a href="{{ path('blog_show',{'id': article.id})}}">
-                                    <img id="img-table-dashboard" data-src="{{uploaded_asset(article.imagePath)}}"
+                                    <img id="img-table-dashboard" data-src="/uploads/articles_images/{{ article.image }}"
                                         alt="{{ article.captionImage }}" uk-img>
                                 </a>
                             </td>

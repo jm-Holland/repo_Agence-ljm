@@ -11,12 +11,12 @@
             <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('article_new') }}">Créer une nouvel
                 article</a>
         </div>
-        <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" uk-grid>
+        <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" uk-height-match="target: > div > .uk-card; row: false" uk-grid>
             {% for article in articles %}
             <div>
                 <div class="uk-card uk-card-default uk-card-hover">
                     <div class="uk-width-auto">
-                        <img data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+                        <img data-src="/uploads/articles_images/{{ article.image }}" alt="{{article.captionImage}}" uk-img>
                     </div>
                     <div class="uk-card-header">
                         <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -41,8 +41,6 @@
                     </div>
                 </div>
             </div>
-            {% else %}
-            No records Found
             {% endfor %}
         </div>
     </div>

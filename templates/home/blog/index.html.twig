@@ -11,7 +11,7 @@
             <div>
                 <div class="uk-card uk-card-default uk-card-hover">
                     <div class="uk-width-auto">
-                        <img data-src="{{ uploaded_asset(article.imagePath) }}" alt="{{article.captionImage}}" uk-img>
+                        <img data-src="/uploads/articles_images/{{ article.image }}" alt="{{article.captionImage}}" uk-img>
                     </div>
                     <div class="uk-card-header">
                         <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -37,7 +37,7 @@
                         <p>{{article.content|slice(0,150)|raw}}...</p>
                     </div>
                     <div class="uk-card-footer">
-                        <a href="{{ path('blog_show',{'id': article.id})}}" class=""><span
+                        <a href="{{ path('blog_show',{'id': article.id})}}" class="uk-button uk-button-text"><span
                                 uk-icon="icon: plus-circle"></span> Lire
                             plus</a>
                     </div>

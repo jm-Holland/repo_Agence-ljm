@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter!{% endblock %}
 
 {% block body %}
 <section class="uk-section-secondary">
-    <div class="uk-align-center uk-text-center">
+    <div class="uk-margin-remove uk-align-center uk-text-center">
         <div class="uk-align-center" style="width: 350px">
             <p><span uk-icon="icon: user; ratio: 6"></span></p>
-            <h1>Please sign in</h1>
+            <h1>Connexion</h1>
             <form method="post" class="uk-form-stacked">
                 {% if error %}
                 <div class="uk-alert uk-alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 <div class="uk-margin">
-                    <label for="inputUsername" class="sr-only">Username</label>
+                    <label for="inputUsername" class="sr-only">Nom de compte :</label>
                     <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
-                        class="form-control" placeholder="Username" required autofocus> </div>
+                        class="form-control" placeholder="Nom de compte" required autofocus> </div>
                 <div class="uk-margin">
-                    <label for="inputPassword" class="sr-only">Password</label>
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>
                     <input type="password" name="password" id="inputPassword" class="form-control"
-                        placeholder="Password" required>
+                        placeholder="Mot de passe" required>
                 </div>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 <div class="uk-margin ">
                     <label>
-                        <input class="uk-chekbox" type="checkbox" name="_remember_me"> Remember me
+                        <input class="uk-chekbox" type="checkbox" name="_remember_me"> Se souvenir de moi
                     </label>
                 </div>
                 <div class="uk-margin">
 
-                    <button class="uk-button uk-button-primary uk-border-rounded" type="submit">
-                        Sign in
+                    <button class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-light uk-align-center" type="submit">
+                        Connexion
                     </button>
                 </div>
             </form>

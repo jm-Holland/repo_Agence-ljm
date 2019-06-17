@@ -53,7 +53,7 @@
                 </div>
                 {% endif %}
             </ul>
-            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="{{ uploaded_asset(article.imagePath) }}"
+            <img class="uk-width-1-2 uk-margin uk-border-rounded" data-src="/uploads/articles_images/{{ article.image }}"
                 alt="{{article.captionImage}}" uk-img>
             <p>{{ article.content|raw }}</p>
         </article>

@@ -10,7 +10,7 @@
                 {% for reference in references %}
                 <div>
                     <div class="uk-flex uk-flex-center ">
-                        <a href="#">
+                        <a uk-toggle="target: #reference-modal{{ reference.id }}">
                         <div class="uk-inline uk-transition-toggle">
                             <img height="{{ reference.imageHeight }}px" class="uk-border-rounded" data-src="/uploads/references_images/{{ reference.image }}" alt="{{ reference.captionImage }}" uk-img>
                             <div class="uk-transition-fade uk-overlay uk-overlay-default uk-position-cover uk-flex uk-flex-center uk-flex-middle">
@@ -24,10 +24,11 @@
 
             <div>
                 <div class="uk-align-center uk-flex uk-flex-center uk-flex-middle refs-button">
-                    <button class="button-large uk-width-1-1 uk-button uk-button-secondary uk-border-rounded">Tout Voir</button>
+                    <button uk-toggle="target: #allreference-modal" class="button-large uk-width-1-1 uk-button uk-button-secondary uk-border-rounded">Tout Voir</button>
                 </div>
             </div>
             </div>
         {% endif %}
         </div>
 </section>
+

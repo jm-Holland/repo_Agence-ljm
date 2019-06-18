@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/blog")
@@ -18,16 +19,29 @@ class BlogController extends AbstractController
 {
     /**
      * @Route("/articles",methods={"GET"}, name="blog_index")
+     * @param ArticleRepository $articles
+     * @param PaginatorInterface $paginator
+     * @return Response
      */
-    public function index(ArticleRepository $articles): Response
+    public function index(Request $request, ArticleRepository $articleRepository, PaginatorInterface $paginator): Response
     {
+        $allArticles = $articleRepository->findAll();
+
+        $articles = $paginator->paginate(
+            $allArticles,
+            $request->query->getInt('page', 1),
+            6
+        );
         return $this->render('home/blog/index.html.twig', [
-            'articles' => $articles->findAll()
+            'articles' => $articles
         ]);
     }
 
     /**
      * @Route("/article/{id}", methods={"GET","POST"}, name="blog_show")
+     * @param Request $request
+     * @param Article $article
+     * @return Response
      */
     public function show(Request $request, Article $article): Response
     {
@@ -36,7 +50,6 @@ class BlogController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $article->addComment($comment);
 
             $em = $this->getDoctrine()->getManager();

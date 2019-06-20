@@ -64,6 +64,12 @@ class Client
     private $organisation;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     *
+     */
+    private $subject;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
      */
@@ -93,6 +99,13 @@ class Client
      * @Assert\Country
      */
     private $country;
+
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    private $Content;
 
     public function getId(): ?int
     {
@@ -191,6 +204,30 @@ class Client
     public function setCountry(?string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(string $subject): self
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->Content;
+    }
+
+    public function setContent(string $Content): self
+    {
+        $this->Content = $Content;
 
         return $this;
     }

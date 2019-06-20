@@ -21,6 +21,9 @@
             No records Found
             {% endfor %}
         </div>
+        <div class="navigation">
+            {{ knp_pagination_render(articles) }}
+        </div>
     </div>
 </section>
 {% endblock %}

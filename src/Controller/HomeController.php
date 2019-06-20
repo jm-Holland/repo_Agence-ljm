@@ -24,7 +24,7 @@ class HomeController extends AbstractController
      * @param ReferenceRepository $reference
      * @return Response
      */
-    public function index(ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
+    public function index(ArticleRepository $article,ReferenceRepository $reference, ServiceRepository $service): Response
     {
         return $this->render('home/index.html.twig', [
             'articles' => $article->findLast(3),

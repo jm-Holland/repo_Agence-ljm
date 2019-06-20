@@ -31,7 +31,7 @@ h3 {
 }
 
 p,
-.uk-text-small {
+.uk-text-small, label {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
@@ -113,7 +113,7 @@ a.uk-text-small:focus,
 
 .uk-button-front {
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     font-weight: bold;
     text-transform: uppercase;
     font-family: 'Quicksand', sans-serif;
@@ -181,8 +181,9 @@ a.uk-text-small {
 .uk-button-large{
     font-size: 1.5rem !important;
 }
-
-
+.uk-modal-full .uk-modal-dialog, .section-solo{
+    min-height:100%
+}
 
 /* Modification propre agence l2J*/
 

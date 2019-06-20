@@ -4,15 +4,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
@@ -93,6 +95,22 @@ class Article
         $this->comments = new ArrayCollection();
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+
+        $this->createdAt = new \DateTime();
+    }
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdateAtValue()
+    {
+        $this->updatedAt = new \DateTime;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,9 +155,7 @@ class Article
     public function setImageFile(?File $imageFile)
     {
         $this->imageFile = $imageFile;
-        if ($this->imageFile instanceof UploadedFile) {
-            $this->updatedAt = new \DateTime('now');
-        }
+        if ($this->imageFile instanceof UploadedFile) { }
         return $this;
     }
 
@@ -167,7 +183,7 @@ class Article
 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->createdAt = new \DateTime('now');
+        $this->createdAt = $createdAt;
 
         return $this;
     }

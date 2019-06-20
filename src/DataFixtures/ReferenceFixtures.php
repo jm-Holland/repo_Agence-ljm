@@ -46,6 +46,5 @@ class ReferenceFixtures extends Fixture
         }
 
         $manager->flush();
-        $manager->flush();
     }
 }

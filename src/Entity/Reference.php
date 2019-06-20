@@ -55,7 +55,7 @@ class Reference
     private $imageFile;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
@@ -84,15 +84,10 @@ class Reference
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->createdAt = new \DateTime('now');
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->createdAt = new \DateTime();
-    }
+
 
     public function getId(): ?int
     {
@@ -204,10 +199,7 @@ class Reference
         return $this->imageFile;
     }
 
-    /**
-     * @param File $imageFile
-     * @throws \Exception
-     */
+
     public function setImageFile(File $imageFile)
     {
         $this->imageFile = $imageFile;

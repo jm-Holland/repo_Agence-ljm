@@ -55,7 +55,7 @@ class Article
     private $imageFile;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
@@ -93,16 +93,9 @@ class Article
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->createdAt = new \DateTime('now');
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-
-        $this->createdAt = new \DateTime();
-    }
     /**
      * @ORM\PreUpdate
      */

@@ -96,14 +96,6 @@ class Article
         $this->createdAt = new \DateTime('now');
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdateAtValue()
-    {
-        $this->updatedAt = new \DateTime;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -148,7 +140,9 @@ class Article
     public function setImageFile(?File $imageFile)
     {
         $this->imageFile = $imageFile;
-        if ($this->imageFile instanceof UploadedFile) { }
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
         return $this;
     }
 

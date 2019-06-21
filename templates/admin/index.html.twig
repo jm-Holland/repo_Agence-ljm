@@ -3,7 +3,7 @@
 {% block title %}DashBoard{% endblock %}
 
 {% block body %}
-    <section class="uk-section uk-section-default section-solo">
+<section class="uk-section uk-section-default section-solo">
     <h1 class="uk-margin-left">DashBoard</h1>
     <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
         <div>
@@ -30,10 +30,12 @@
                                         <div class="uk-text-center">
                                             <form method="post" action="{{ path('user_delete', {'id': user.id}) }}">
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                                <input type="hidden" name="_token"
+                                                    value="{{ csrf_token('delete' ~ user.id) }}">
                                                 <button class="uk-button uk-button-danger">Supprimer</button>
                                             </form>
-                                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                                type="button">Annuler</button>
                                         </div>
                                     </div>
                             </td>
@@ -64,7 +66,8 @@
                             <td>{{article.author.username}}</td>
                             <td>
                                 <a href="{{ path('blog_show',{'id': article.id})}}">
-                                    <img id="img-table-dashboard" data-src="/uploads/articles_images/{{ article.image }}"
+                                    <img id="img-table-dashboard"
+                                        data-src="/uploads/articles_images/{{ article.image }}"
                                         alt="{{ article.captionImage }}" uk-img>
                                 </a>
                             </td>
@@ -76,12 +79,16 @@
                                     <div class="uk-modal-dialog uk-modal-body">
                                         <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
                                         <div class="uk-text-center">
-                                            <form method="post" action="{{ path('article_delete', {'id': article.id}) }}">
+                                            <form method="post"
+                                                action="{{ path('article_delete', {'id': article.id}) }}">
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                                                <button class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
+                                                <input type="hidden" name="_token"
+                                                    value="{{ csrf_token('delete' ~ article.id) }}">
+                                                <button
+                                                    class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
                                             </form>
-                                            <button class="uk-margin uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                                type="button">Annuler</button>
                                         </div>
                                     </div>
                             </td>
@@ -117,6 +124,5 @@
             </div>
         </div>
     </div>
-
 </section>
 {% endblock %}

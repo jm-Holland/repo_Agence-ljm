@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Entity\Comment;
-use App\Form\CommentType;
+use App\Entity\Client;
+use App\Form\ClientType;
 use App\Repository\ArticleRepository;
-use App\Repository\ReferenceRepository;
 use App\Repository\ServiceRepository;
+use App\Repository\ReferenceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 /**
  * @Route("/")
@@ -24,13 +24,28 @@ class HomeController extends AbstractController
      * @param ReferenceRepository $reference
      * @return Response
      */
-    public function index(ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
+    public function index(Request $request, ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
     {
+        $client = new Client();
+
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($client);
+            $em->flush();
+
+            $this->addFlash('success', "Votre demande a bien été enregistrée.");
+            return $this->redirectToRoute('home_index');
+        }
+
         return $this->render('home/index.html.twig', [
             'articles' => $article->findLast(3),
             'references' => $reference->findLast(5),
             'allreferences' => $reference->findAll(),
-            'services' => $service->findAll()
+            'services' => $service->findAll(),
+            'form' => $form->createView()
         ]);
     }
 

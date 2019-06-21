@@ -45,8 +45,7 @@ class Client
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Email(
-     *     message = "L'email : '{{ value }}' n'a pas un format valide!.",
-     *     checkMX = true
+     *     message = "L'email : '{{ value }}' n'a pas un format valide!."
      * )
      */
     private $email;
@@ -77,7 +76,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\NotBlank
+     *
      * @Assert\Length(
      *      min= 5,
      *      max= 5,

@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id 'error' %}
 
-{% block main %}
+{% block body %}
 <h1 class="uk-text-danger">{{ 'http_error.name'|trans({ '%status_code%': status_code }) }}</h1>
 
 <p class="uk-text-lead">
@@ -11,10 +10,4 @@
 <p>
     {{ 'http_error.suggestion'|trans({ '%url%': path('blog_index') })|raw }}
 </p>
-{% endblock %}
-
-{% block sidebar %}
-{{ parent() }}
-
-{{ show_source_code(_self) }}
 {% endblock %}

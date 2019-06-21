@@ -1,19 +1,22 @@
 <section id="contact" class="uk-section uk-section-secondary">
     <div class="uk-container" uk-scrollspy="target: > form; cls: uk-animation-fade; delay: 200">
         <h2 class="uk-text-center">Contact</h2>
+        {{form_start(form)}}
         <form class="uk-form-stacked">
             <div class="uk-child-width-expand@s" uk-grid>
                 <div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Nom* :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre nom">
+                            {{form_widget(form.lastName)}}
+                            {{form_errors(form.lastName)}}
                         </div>
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Email* :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre email">
+                            {{form_widget(form.email)}}
+                            {{form_errors(form.email)}}
                         </div>
                     </div>
                 </div>
@@ -21,33 +24,30 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Prénom* :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre prénom">
+                            {{form_widget(form.firstName)}}
+                            {{form_errors(form.firstName)}}
                         </div>
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Organisation :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre organisation">
+                            {{form_widget(form.organisation)}}
+                            {{form_errors(form.organisation)}}
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Objet du message* :</label>
                 <div class="uk-form-controls">
-                    <select class="uk-select" id="form-stacked-text">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                    </select>
+                    {{form_widget(form.subject)}}
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Adresse* :</label>
                 <div class="uk-form-controls">
-                    <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre adresse">
+                    {{form_widget(form.address)}}
+                    {{form_errors(form.address)}}
                 </div>
             </div>
             <div class="uk-child-width-expand@s" uk-grid>
@@ -55,7 +55,8 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Code Postal* :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre code postal">
+                            {{form_widget(form.codePostal)}}
+                            {{form_errors(form.codePostal)}}
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,8 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Ville* :</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-stacked-text" type="text" placeholder="Votre ville">
+                            {{form_widget(form.city)}}
+                            {{form_errors(form.city)}}
                         </div>
                     </div>
                 </div>
@@ -71,12 +73,7 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Pays* :</label>
                         <div class="uk-form-controls">
-                            <select class="uk-select" id="form-stacked-text">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                            </select>
+                            {{form_widget(form.country)}}
                         </div>
                     </div>
                 </div>
@@ -84,8 +81,8 @@
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Message* :</label>
                 <div class="uk-form-controls">
-                    <textarea name="" id="" cols="30" rows="10" class="uk-textarea"
-                        placeholder="Votre message"></textarea>
+                    {{form_widget(form.Content)}}
+                    {{form_errors(form.Content)}}
                 </div>
             </div>
             <p class="uk-light">Les champs avec * son obligatoires</p>
@@ -94,5 +91,6 @@
                     class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-light uk-align-center">Envoyer</button>
             </div>
         </form>
+        {{form_end(form)}}
     </div>
 </section>

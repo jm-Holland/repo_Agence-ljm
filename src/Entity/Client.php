@@ -178,7 +178,7 @@ class Client
 
     public function setCodePostal(?string $codePostal): self
     {
-        $this->cp = $codePostal;
+        $this->codePostal = $codePostal;
 
         return $this;
     }

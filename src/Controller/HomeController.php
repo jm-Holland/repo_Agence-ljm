@@ -26,11 +26,12 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
     {
-        $client = new Client();
 
+        $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $client = $form->getdata();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($client);

@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home_index")
+     * @Route("/", name="home_index",methods={"GET","POST"})
      *
      */
     public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services): Response
@@ -29,23 +29,24 @@ class HomeController extends AbstractController
 
         $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $customer = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();
-
-
+            $this->addFlash('success', 'Votre demande a bien été enregistrée!');
             return $this->redirectToRoute('home_index' . '#contact');
         }
 
         return $this->render('home/index.html.twig', [
-            'form'          => $form->createView(),
+
             'articles'      => $articles->findLast(3),
             'references'    => $references->findLast(5),
             'allreferences' => $references->findAll(),
             'services'      => $services->findAll(),
+            'form'          => $form->createView()
 
         ]);
     }

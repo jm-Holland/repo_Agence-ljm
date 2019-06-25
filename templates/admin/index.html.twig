@@ -123,6 +123,31 @@
                 </table>
             </div>
         </div>
+        <div>
+            <div class="uk-padding">
+                <h3>Clients</h3>
+                <table class="uk-table uk-table-hover uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>lastName</th>
+                            <th>firstName</th>
+                            <th>Organisation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{customer.id}}</td>
+                            <td>{{customer.lastName}}</td>
+                            <td>{{customer.firstName}}</td>
+                            <td>{{customer.company}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

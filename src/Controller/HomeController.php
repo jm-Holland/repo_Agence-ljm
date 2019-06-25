@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
-use App\Form\ClientType;
+use App\Entity\Customer;
+use App\Form\CustomerType;
 use App\Repository\ArticleRepository;
 use App\Repository\ServiceRepository;
 use App\Repository\ReferenceRepository;
@@ -20,33 +20,33 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home_index")
-     * @param ArticleRepository $article
-     * @param ReferenceRepository $reference
-     * @return Response
+     *
      */
-    public function index(Request $request, ArticleRepository $article, ReferenceRepository $reference, ServiceRepository $service): Response
+    public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services): Response
     {
 
-        $client = new Client();
-        $form = $this->createForm(ClientType::class, $client);
+        $customer = new Customer();
+
+        $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $client = $form->getdata();
+            $customer = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($client);
+            $em->persist($customer);
             $em->flush();
 
-            $this->addFlash('success', "Votre demande a bien été enregistrée.");
-            return $this->redirectToRoute('home_index');
+
+            return $this->redirectToRoute('home_index' . '#contact');
         }
 
         return $this->render('home/index.html.twig', [
-            'articles' => $article->findLast(3),
-            'references' => $reference->findLast(5),
-            'allreferences' => $reference->findAll(),
-            'services' => $service->findAll(),
-            'form' => $form->createView()
+            'form'          => $form->createView(),
+            'articles'      => $articles->findLast(3),
+            'references'    => $references->findLast(5),
+            'allreferences' => $references->findAll(),
+            'services'      => $services->findAll(),
+
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Client;
+use App\Entity\Customer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,13 +12,14 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class ClientType extends AbstractType
+class CustomerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('firstName', TextType::class, [
                 'attr' => [
+                    'autofocus' => TRUE,
                     'class' => 'uk-input',
                     'placeholder' => 'Votre prénom'
                 ]
@@ -35,10 +36,10 @@ class ClientType extends AbstractType
                     'placeholder' => 'Votre email'
                 ]
             ])
-            ->add('organisation', TextType::class, [
+            ->add('company', TextType::class, [
                 'attr' => [
                     'class' => 'uk-input',
-                    'placeholder' => 'Votre organisation'
+                    'placeholder' => 'Votre entreprise'
                 ]
             ])
             ->add('subject', ChoiceType::class, [
@@ -56,7 +57,7 @@ class ClientType extends AbstractType
                     'placeholder' => 'Votre adresse'
                 ]
             ])
-            ->add('codePostal', TextType::class, [
+            ->add('postalCode', TextType::class, [
                 'attr' => [
                     'class' => 'uk-input',
                     'placeholder' => 'Votre code postal'
@@ -75,7 +76,7 @@ class ClientType extends AbstractType
                     'class' => 'uk-select'
                 ]
             ])
-            ->add('Content', TextareaType::class, [
+            ->add('content', TextareaType::class, [
                 'attr' => [
                     'class' => 'uk-textarea',
                     'rows' => '10',
@@ -88,7 +89,7 @@ class ClientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Client::class,
+            'data_class' => Customer::class,
         ]);
     }
 }

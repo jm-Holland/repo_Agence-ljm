@@ -1,37 +1,33 @@
 {# default Sliding pagination control implementation #}
 
-
-
-
-
-
 {% if pageCount > 1 %}
-    <ul class="uk-pagination uk-flex-center" uk-margin>
+<ul class="uk-pagination uk-flex-center" uk-margin>
 
-        {% if previous is defined %}
-            <li><a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><span uk-pagination-previous></span></a></li>
-        {% endif %}
+    {% if previous is defined %}
+    <li><a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><span
+                uk-pagination-previous></span></a></li>
+    {% endif %}
 
-        {% if first is defined and current != first and current > 3 %}
-            <li><a href="{{ path(route, query|merge({(pageParameterName): first})) }}">1</a></li>
-            <li class="uk-disabled"><span>...</span></li>
-        {% endif %}
+    {% if first is defined and current != first and current > 3 %}
+    <li><a href="{{ path(route, query|merge({(pageParameterName): first})) }}">1</a></li>
+    <li class="uk-disabled"><span>...</span></li>
+    {% endif %}
 
-        {% for page in pagesInRange %}
-            {% if page != current %}
-                <li><a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a></li>
-            {% else %}
-                <li class="uk-active"><span>{{ page }}</span></li>
-            {% endif %}
-        {% endfor %}
+    {% for page in pagesInRange %}
+    {% if page != current %}
+    <li><a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a></li>
+    {% else %}
+    <li class="uk-active"><span>{{ page }}</span></li>
+    {% endif %}
+    {% endfor %}
 
-        {% if last is defined and current != last and current < (pageCount - 2)%}
-            <li class="uk-disabled"><span>...</span></li>
-            <li><a href="{{ path(route, query|merge({(pageParameterName): last})) }}">{{ pageCount }}</a></li>
-        {% endif %}
+    {% if last is defined and current != last and current < (pageCount - 2)%}
+    <li class="uk-disabled"><span>...</span></li>
+    <li><a href="{{ path(route, query|merge({(pageParameterName): last})) }}">{{ pageCount }}</a></li>
+    {% endif %}
 
-        {% if next is defined %}
-            <li><a href="{{ path(route, query|merge({(pageParameterName): next})) }}"><span uk-pagination-next></span></a></li>
-        {% endif %}
-    </ul>
+    {% if next is defined %}
+    <li><a href="{{ path(route, query|merge({(pageParameterName): next})) }}"><span uk-pagination-next></span></a></li>
+    {% endif %}
+</ul>
 {% endif %}

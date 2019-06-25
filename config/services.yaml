@@ -16,8 +16,6 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
         # setup special, global autowriting rules
-        bind:
-            $uploadsPath: '%kernel.project_dir%/public/uploads/'
 
 
 

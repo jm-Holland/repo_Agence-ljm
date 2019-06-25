@@ -1,20 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id 'error' %}
+{% block body %}
+<h1>Page non trouvée</h1>
 
-{% block main %}
-<h1 class="uk-text-danger">{{ 'http_error.name'|trans({ '%status_code%': 404 }) }}</h1>
-
-<p class="uk-text-lead">
-    {{ 'http_error_404.description'|trans }}
-</p>
 <p>
-    {{ 'http_error_404.suggestion'|trans({ '%url%': path('blog_index') })|raw }}
+    La page demandée n'a pas pu être localisée .Vérifiez l'othographe de votre recherche ou <a
+        href="{{ path('homepage') }}">retournez à la page d'accueil!</a>.
 </p>
-{% endblock %}
-
-{% block sidebar %}
-{{ parent() }}
-
-{{ show_source_code(_self) }}
 {% endblock %}

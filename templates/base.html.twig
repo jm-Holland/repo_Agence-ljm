@@ -26,14 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
     <script src="https://kit.fontawesome.com/6da3cb6307.js"></script>
-    <script>
-        $('.custom-file-input').on('change', function (event) {
-            var inputFile = event.currentTarget;
-            $(inputFile).parent()
-                .find('.custom-file-label')
-                .html(inputFile.files[0].name);
-        });
-    </script>
+    <script src="{{asset('js/inputFile.js')}}"></script>
     {% endblock %}
 </body>
 

@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\admin;
 
 use App\Entity\Customer;
-use App\Form\Customer1Type;
+use App\Form\CustomerType;
 use App\Repository\CustomerRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/customer")
+ * @IsGranted("ROLE_USER")
  */
 class CustomerController extends AbstractController
 {
@@ -31,7 +33,7 @@ class CustomerController extends AbstractController
     public function new(Request $request): Response
     {
         $customer = new Customer();
-        $form = $this->createForm(Customer1Type::class, $customer);
+        $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +65,7 @@ class CustomerController extends AbstractController
      */
     public function edit(Request $request, Customer $customer): Response
     {
-        $form = $this->createForm(Customer1Type::class, $customer);
+        $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

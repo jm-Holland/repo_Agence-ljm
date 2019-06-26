@@ -44,8 +44,8 @@ class CustomerType extends AbstractType
             ])
             ->add('subject', ChoiceType::class, [
                 'choices' => [
-                    'Demande d\'informations' => 'infos',
-                    'Demande de devis' => 'devis',
+                    'Demande d\'informations' => "d'information",
+                    'Demande de devis' => "de devis",
                 ],
                 'attr' => [
                     'class' => 'uk-select'
@@ -79,8 +79,7 @@ class CustomerType extends AbstractType
             ->add('content', TextareaType::class, [
                 'attr' => [
                     'class' => 'uk-textarea',
-                    'rows' => '10',
-                    'cols' => '30',
+                    'rows' => '6',
                     'placeholder' => 'Votre message'
                 ]
             ]);

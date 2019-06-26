@@ -11,21 +11,32 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Service\MailerService;
 
 /**
  * @Route("/")
  */
 class HomeController extends AbstractController
 {
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/", name="home_index",methods={"GET","POST"})
      *
      */
-    public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services): Response
+    public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services, MailerService $mailerService): Response
     {
-        $customer = new Customer();
-
+        if (!$this->session->has('value')) {
+            $customer = new Customer();
+        } else {
+            $customer = $this->session->get('value');
+        }
         $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
 
@@ -36,7 +47,12 @@ class HomeController extends AbstractController
             $em->persist($customer);
             $em->flush();
 
-            $this->addFlash('success', 'Votre demande a bien été enregistrée!');
+            try {
+                $mailerService->postMail($customer);
+                $this->addFlash('success', 'Votre ' . $customer->getSubject() . 'a été envoyé, vous allez recevoir un email de confirmation sur ' . $customer->getEmail());
+            } catch (\Exception $e) {
+                throw new \Exception('warning', 'Une erreur est survenue lors de l\'envoi de l\'email,merci de refaire votre demande');
+            }
             return $this->redirectToRoute('home_index');
         }
         return $this->render('home/index.html.twig', [
@@ -62,5 +78,21 @@ class HomeController extends AbstractController
     public function privacyPolicy()
     {
         return $this->render('home/footer/privacy-policy.html.twig');
+    }
+
+    /**
+     * Verification of the current session
+     *
+     * @return Response
+     */
+    public function verifSession(): Response
+    {
+        // Verification of the current session otherwise error
+        if (!$this->session->has('value')) {
+            $this->addFlash('danger', "An error has occurred, thank you to renew your request !");
+            return $this->redirectToRoute('home_index');
+        }
+        $valueSession = $this->session->get('value');
+        return $valueSession;
     }
 }

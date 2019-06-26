@@ -30,7 +30,7 @@ class HomeController extends AbstractController
      * @Route("/", name="home_index",methods={"GET","POST"})
      *
      */
-    public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services, MailerService $mailerService): Response
+    public function index(ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services, Request $request, MailerService $mailerService): Response
     {
         if (!$this->session->has('value')) {
             $customer = new Customer();
@@ -49,7 +49,7 @@ class HomeController extends AbstractController
 
             try {
                 $mailerService->postMail($customer);
-                $this->addFlash('success', 'Votre ' . $customer->getSubject() . 'a été envoyé, vous allez recevoir un email de confirmation sur ' . $customer->getEmail());
+                $this->addFlash('success', 'Votre demande ' . $customer->getSubject() . 'a bien été envoyé, vous allez recevoir un email de confirmation sur ' . $customer->getEmail());
             } catch (\Exception $e) {
                 throw new \Exception('warning', 'Une erreur est survenue lors de l\'envoi de l\'email,merci de refaire votre demande');
             }

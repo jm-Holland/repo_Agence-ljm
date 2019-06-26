@@ -1,8 +1,8 @@
 <section id="contact" class="uk-section uk-section-secondary">
     <div class="uk-container" uk-scrollspy="target: > form; cls: uk-animation-fade; delay: 200">
         <h2 class="uk-text-center">Contact</h2>
-        {{form_start(form,{'action':path('home_index'),'method':'POST'})}}
-        <form class="uk-form-stacked">
+        {{form_start(form)}}
+        <form action="" method="post" class="uk-form-stacked">
             <div class="uk-child-width-expand@s" uk-grid>
                 <div>
                     <div class="uk-margin">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <p class="uk-light">Les champs avec * son obligatoires</p>
-
+            {{ form_widget(form)}}
             <div class="uk-margin">
                 <input type="submit"
                     class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-align-center"

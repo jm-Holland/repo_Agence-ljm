@@ -21,7 +21,7 @@
                     {% if is_granted('ROLE_USER') %}
                         <li>
                             <p class="uk-article-meta">
-                                <a href="{{ path('reference_edit',{'id': reference.id})}}">
+                                <a href="{{ path('reference_edit',{'id': reference.id}) }}">
                                     <span uk-icon="icon: file-edit"></span>
                                 </a>
                             </p>
@@ -47,7 +47,7 @@
                     {% endif %}
                 </ul>
                 <img class="uk-margin uk-border-rounded uk-align-left" data-src="/uploads/references_images/{{ reference.image }}"
-                     alt="{{reference.captionImage}}" uk-img>
+                     alt="{{ reference.captionImage }}" uk-img>
                 <p>{{ reference.mission|raw }}</p>
             </article>
             </div>
@@ -98,7 +98,7 @@
                         {% if is_granted('ROLE_USER') %}
                             <li>
                                 <p class="uk-article-meta">
-                                    <a href="{{ path('service_edit',{'id': service.id})}}">
+                                    <a href="{{ path('service_edit',{'id': service.id}) }}">
                                         <span uk-icon="icon: file-edit"></span>
                                     </a>
                                 </p>
@@ -124,7 +124,7 @@
                         {% endif %}
                     </ul>
                     <img class="uk-margin uk-border-rounded uk-align-left" data-src="/uploads/services_images/{{ service.image }}"
-                         alt="{{service.captionImage}}" uk-img>
+                         alt="{{ service.captionImage }}" uk-img>
                     <p>{{ service.content|raw }}</p>
                 </article>
             </div>

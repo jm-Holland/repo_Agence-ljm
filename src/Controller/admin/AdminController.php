@@ -2,6 +2,8 @@
 
 namespace App\Controller\admin;
 
+use App\Repository\ReferenceRepository;
+use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
@@ -19,13 +21,16 @@ class AdminController extends AbstractController
     /**
      * @Route("/DashBoard", name="admin_index")
      */
-    public function index(ArticleRepository $articles, CommentRepository $comments, UserRepository $users, CustomerRepository $customers)
+    public function index(ArticleRepository $articles, CommentRepository $comments, UserRepository $users, CustomerRepository $customers,
+                          ReferenceRepository $references, ServiceRepository $services)
     {
         return $this->render('admin/index.html.twig', [
-            'articles'  => $articles->findLast(5),
+            'articles'  => $articles->findAll(),
             'comments'  => $comments->findAll(),
             'users'     => $users->findAll(),
-            'customers'   => $customers->findall()
+            'customers'   => $customers->findall(),
+            'references' => $references->findAll(),
+            'services' => $services->findAll()
         ]);
     }
 }

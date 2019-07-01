@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Reference;
 use App\Form\ReferenceType;
 use App\Repository\ReferenceRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +23,17 @@ class ReferenceController extends AbstractController
      * @param ReferenceRepository $references
      * @return Response
      */
-    public function index(ReferenceRepository $references)
+    public function index(ReferenceRepository $referencesRepository, Request $request, PaginatorInterface $paginator)
     {
+        $allReferences = $referencesRepository->findAll();
+
+        $references= $paginator->paginate(
+            $allReferences,
+            $request->query->getInt('page', 1), 6
+        );
+        $references->setTemplate('partials/_pagination.html.twig');
         return $this->render('admin/reference/index.html.twig', [
-            'references' => $references->findAll()
+            'references' => $references
         ]);
     }
 

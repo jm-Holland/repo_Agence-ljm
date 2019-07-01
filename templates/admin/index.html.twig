@@ -4,183 +4,37 @@
 
 {% block body %}
 <section class="uk-section uk-section-default section-solo">
-    <h1 class="uk-margin-left">DashBoard</h1>
-    <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
-        {# utilisateurs #}
+    <div class="uk-container uk-container-large">
+    <h1>DashBoard</h1>
+    <div class="uk-child-width-expand@s" uk-grid>
         <div>
-            <div class="uk-padding">
-                <h3>Utilisateurs</h3>
-                <table class="uk-table uk-table-hover uk-table-divider">
-                    <thead>
-                        <tr>
-                            <th>Pseudo</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{user.username}}</td>
-                            <td>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}"><span
-                                        uk-icon="icon: file-edit"></span></a>
-                                <a href="#delete-user-confirm" uk-toggle><span uk-icon="icon: trash"></span></a>
-                                <div id="delete-user-confirm" uk-modal>
-                                    <div class="uk-modal-dialog uk-modal-body">
-                                        <p class="uk-text-center">Voulez vous vraiment supprimer cet utilisateur ?</p>
-                                        <div class="uk-text-center">
-                                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token"
-                                                    value="{{ csrf_token('delete' ~ user.id) }}">
-                                                <button class="uk-button uk-button-danger">Supprimer</button>
-                                            </form>
-                                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
-                                                type="button">Annuler</button>
-                                        </div>
-                                    </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            <h2>Articles : {{ articles|length }} <a href="{{ path('article_new') }}"><span uk-icon="icon: plus-circle; ratio: 2"></span></a></h2><br>
+            <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('article_index')}}">Accéder aux articles</a>
         </div>
-        {# Articles #}
         <div>
-            <div class="uk-padding">
-                <h3>Article</h3>
-                <table class="uk-table uk-table-hover uk-table-divider">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Titre</th>
-                            <th>Auteur</th>
-                            <th>Image</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for article in articles %}
-                        <tr>
-                            <td>{{article.id}}</td>
-                            <td><a href="{{ path('blog_show',{'id': article.id})}}">{{article.title}}</a></td>
-                            <td>{{article.author.username}}</td>
-                            <td>
-                                <a href="{{ path('blog_show',{'id': article.id})}}">
-                                    <img id="img-table-dashboard"
-                                        data-src="/uploads/articles_images/{{ article.image }}"
-                                        alt="{{ article.captionImage }}" uk-img>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('article_edit',{'id': article.id})}}"><span
-                                        uk-icon="icon: file-edit"></span></a>
-                                <a href="#delete-post-confirm" uk-toggle><span uk-icon="icon: trash"></span></a>
-                                <div id="delete-post-confirm" uk-modal>
-                                    <div class="uk-modal-dialog uk-modal-body">
-                                        <p class="uk-text-center">Voulez vous vraiment supprimer cet article ?</p>
-                                        <div class="uk-text-center">
-                                            <form method="post"
-                                                action="{{ path('article_delete', {'id': article.id}) }}">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token"
-                                                    value="{{ csrf_token('delete' ~ article.id) }}">
-                                                <button
-                                                    class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
-                                            </form>
-                                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
-                                                type="button">Annuler</button>
-                                        </div>
-                                    </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            <h2>Références : {{ references|length }} <a href="{{ path('reference_new') }}"><span uk-icon="icon: plus-circle; ratio: 2"></span></a></h2><br>
+            <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('reference_index')}}">Accéder aux références</a>
         </div>
-        {# commentaires #}
         <div>
-            <div class="uk-padding">
-                <h3>Commentaires</h3>
-                <table class="uk-table uk-table-hover uk-table-divider">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Auteur</th>
-                            <th>Contenu</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for comment in comments %}
-                        <tr>
-                            <td>{{comment.id}}</td>
-                            <td>{{comment.author}}</td>
-                            <td>{{comment.content}}</td>
-                            <td></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            <h2>Services : {{ services|length }} <a href="{{ path('service_new') }}"><span uk-icon="icon: plus-circle; ratio: 2"></span></a></h2><br>
+            <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('service_index')}}">Accéder aux services</a>
         </div>
-        {# Customers #}
-        <div>
-            <div class="uk-padding">
-                <h3>Clients</h3>
-                <table class="uk-table uk-table-hover uk-table-divider">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nom</th>
-                            <th>prénom</th>
-                            <th>Entreprise</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for customer in customers %}
-                        <tr>
-                            <td>{{ customer.id }}</td>
-                            <td>
-                                <a href="{{ path('customer_show',{'id': customer.id })}}">
-                                    {{ customer.lastName }}
-                                </a>
-                            </td>
-                            <td>{{ customer.firstName }}</td>
-                            <td>
-                                <a href="{{ path('customer_show',{'id': customer.id })}}">
-                                    {{ customer.company }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('customer_edit',{'id': customer.id})}}"><span
-                                        uk-icon="icon: file-edit"></span></a>
-                                <a href="#delete-customer-confirm" uk-toggle><span uk-icon="icon: trash"></span></a>
-                                <div id="delete-customer-confirm" uk-modal>
-                                    <div class="uk-modal-dialog uk-modal-body">
-                                        <p class="uk-text-center">Voulez vous vraiment supprimer ce client ?</p>
-                                        <div class="uk-text-center">
-                                            <form method="post"
-                                                action="{{ path('customer_delete', {'id': customer.id}) }}">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token"
-                                                    value="{{ csrf_token('delete' ~ customer.id) }}">
-                                                <button
-                                                    class="uk-button uk-button-danger uk-border-rounded">Supprimer</button>
-                                            </form>
-                                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
-                                                type="button">Annuler</button>
-                                        </div>
-                                    </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+    </div>
+        <div class="uk-child-width-expand@s" uk-grid>
+
+            <div>
+                <h2>Commentaires : {{ comments|length }}</h2><br>
+                <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('comment_index')}}">Accéder aux commentaires</a>
             </div>
-        </div>
+            <div>
+                <h2>Clients : {{ customers|length }}</h2><br>
+                <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('customer_index')}}">Accéder aux clients</a>
+            </div>
+            <div>
+                <h2>Utilisateur : {{ users|length }} <a href="{{ path('user_new') }}"><span uk-icon="icon: plus-circle; ratio: 2"></span></a></h2><br>
+                <a class="uk-button uk-button-primary uk-border-rounded" href="{{ path('user_index')}}">Accéder aux utilisateurs</a>
+            </div>
+    </div>
+    </div>
 </section>
 {% endblock %}

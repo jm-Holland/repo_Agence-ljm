@@ -30,7 +30,7 @@ class HomeController extends AbstractController
      * @Route("/", name="home_index",methods={"GET","POST"})
      *
      */
-    public function index(Request $request, ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services, MailerService $mailerService): Response
+    public function index(ArticleRepository $articles, ReferenceRepository $references, ServiceRepository $services, Request $request, MailerService $mailerService): Response
     {
         if (!$this->session->has('value')) {
             $customer = new Customer();

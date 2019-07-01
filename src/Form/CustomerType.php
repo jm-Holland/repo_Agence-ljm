@@ -19,7 +19,6 @@ class CustomerType extends AbstractType
         $builder
             ->add('firstName', TextType::class, [
                 'attr' => [
-                    'autofocus' => TRUE,
                     'class' => 'uk-input',
                     'placeholder' => 'Votre prénom'
                 ]

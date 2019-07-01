@@ -12,7 +12,8 @@ h3,
 h4,
 h5,
 h6,
-a, .uk-button-text {
+a,
+.uk-button-text {
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -31,7 +32,8 @@ h3 {
 }
 
 p,
-.uk-text-small, label {
+.uk-text-small,
+label {
     font-family: 'Noto Sans JP', sans-serif;
 }
 .uk-light{
@@ -170,30 +172,36 @@ a.uk-text-small {
     font-family: 'Quicksand', sans-serif;
 }
 
-.uk-article-meta strong{
+.uk-article-meta strong {
     margin: 0 5px;
     font-size: 1rem;
 }
-.uk-breadcrumb>:last-child>*{
+
+.uk-breadcrumb>:last-child>* {
     color: #999 !important;
 }
 
-.uk-button{
+.uk-button {
     font-size: 0.875rem;
 }
-.uk-button-large{
+
+.uk-button-large {
     font-size: 1.5rem !important;
 }
-.uk-modal-full .uk-modal-dialog, .section-solo{
-    min-height:100%
+
+.uk-modal-full .uk-modal-dialog,
+.section-solo {
+    min-height: 100%
 }
 
 /* Modification propre agence l2J*/
 
-#logo {
+#logo,
+#logo_admin {
     max-width: 7.5rem;
     max-height: 3.75rem;
 }
+
 
 .full-page-img {
     height: 100%;
@@ -217,9 +225,11 @@ a.uk-text-small {
     min-width: 360px;
     margin: 0 auto;
 }
-.section-solo{
+
+.section-solo {
     padding-top: 40px !important;
 }
+
 footer .uk-container {
     padding-top: 20px
 }

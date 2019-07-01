@@ -4,6 +4,8 @@
 
 {% block body %}
 
+{% include "home/_modal.html.twig" %}
+
 <!-- Image Fixe-->
 <div id="index" data-src="{{asset('img/bg.jpg')}}" uk-img class="uk-inline full-page-img">
 
@@ -17,20 +19,32 @@
     </div>
 </div>
 <!-- NOS SERVICES-->
-{% include "home/_services.html.twig" %}
+<section id="services" class="uk-section uk-section-secondary">
+    {% include "home/_services.html.twig" %}
+</section>
+
 
 <!-- REFERENCES-->
-{% include "home/_references.html.twig" %}
+<section id="refs" class="uk-section uk-section-default">
+    {% include "home/_references.html.twig" %}
+</section>
+
 
 <!-- Blog-->
-{% include "home/_blog.html.twig" %}
+<section id="blog-section" class="uk-section uk-section-secondary">
+    {% include "home/_blog.html.twig" %}
+</section>
+
 
 <!-- Team-->
-{% include "home/_team.html.twig" %}
+<section id="agence" class="uk-section uk-section-default">
+    {% include "home/_team.html.twig" %}
+</section>
+
 
 <!-- Form -->
-{% include "home/_contact.html.twig" %}
-
-{% include "home/_modal.html.twig" %}
+<section id="contact" class="uk-section uk-section-secondary">
+    {% include "home/_contact.html.twig" %}
+</section>
 
 {% endblock %}

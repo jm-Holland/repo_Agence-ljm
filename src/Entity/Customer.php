@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
  */
-class Client
+class Customer
 {
     /**
      * @ORM\Id()
@@ -51,32 +51,30 @@ class Client
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255,nullable=true)
      * @Assert\NotBlank
      *  @Assert\Length(
      *      min = 2,
      *      max = 50,
-     *      minMessage = "Votre nom d'organisation  doit avoir au minimum {{ limit }} caractères",
-     *      maxMessage = "Votre nom d'organisation doit avoir au maximum{{ limit }} caractères"
+     *      minMessage = "Votre nom d'entreprise doit avoir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre nom d'entreprise doit avoir au maximum{{ limit }} caractères"
      * )
      */
-    private $organisation;
+    private $company;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      */
     private $subject;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=255)
+     * Assert\NotBlank
      */
     private $address;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     *
+     * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      min= 5,
      *      max= 5,
@@ -84,27 +82,25 @@ class Client
      *      maxMessage=" le code postal ne doit pas avoir plus de {{ limit }} caractères!."
      * )
      */
-    private $codePostal;
+    private $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=255)
      * @Assert\Country
      */
     private $country;
-
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
      */
-    private $Content;
+    private $content;
 
     public function getId(): ?int
     {
@@ -147,62 +143,14 @@ class Client
         return $this;
     }
 
-    public function getOrganisation(): ?string
+    public function getCompany(): ?string
     {
-        return $this->organisation;
+        return $this->company;
     }
 
-    public function setOrganisation(?string $organisation): self
+    public function setCompany(?string $company): self
     {
-        $this->organisation = $organisation;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    public function getCodePostal(): ?string
-    {
-        return $this->codePostal;
-    }
-
-    public function setCodePostal(?string $codePostal): self
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(?string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $country): self
-    {
-        $this->country = $country;
+        $this->company = $company;
 
         return $this;
     }
@@ -219,14 +167,62 @@ class Client
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getAddress(): ?string
     {
-        return $this->Content;
+        return $this->address;
     }
 
-    public function setContent(string $Content): self
+    public function setAddress(?string $address): self
     {
-        $this->Content = $Content;
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): self
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }

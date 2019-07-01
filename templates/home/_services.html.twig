@@ -1,25 +1,23 @@
-<section id="services" class="uk-section uk-section-secondary">
-    <div class="uk-container uk-container-large">
-        <h2 class="uk-text-center uk-light">Nos services</h2>
-        <div class="uk-child-width-1-5@l uk-child-width-1-2@s"
-            uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid>
-            {% if services is empty %}
-            <p>Aucun service n'a été trouvé</p>
-            {% else %}
-            {% for service in services %}
-            <div>
-                <a uk-toggle="target: #service-modal{{ service.id }}" class="uk-link-toggle">
-                    <div class="service-img">
-                        <img data-src="/uploads/services_images/{{ service.image }}" class="uk-align-center"
-                            alt="{{ service.captionImage }}" uk-img>
-                    </div>
-                    <h3 class="uk-text-center uk-link-heading">{{ service.title }}</h3>
-                    <div class="uk-text-center">{{ service.description|raw }}</div>
-                </a>
-            </div>
-            {% endfor %}
-            {% endif %}
-
+<div class="uk-container uk-container-large">
+    <h2 class="uk-text-center uk-light">Nos services</h2>
+    <div class="uk-child-width-1-5@l uk-child-width-1-2@s"
+        uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid>
+        {% if services is empty %}
+        <p>Aucun service n'a été trouvé</p>
+        {% else %}
+        {% for service in services %}
+        <div>
+            <a uk-toggle="target: #service-modal{{ service.id }}" class="uk-link-toggle">
+                <div class="service-img">
+                    <img data-src="/uploads/services_images/{{ service.image }}" class="uk-align-center"
+                        alt="{{ service.captionImage }}" uk-img>
+                </div>
+                <h3 class="uk-text-center uk-link-heading">{{ service.title }}</h3>
+                <div class="uk-text-center">{{ service.description|raw }}</div>
+            </a>
         </div>
+        {% endfor %}
+        {% endif %}
+
     </div>
-</section>
+</div>

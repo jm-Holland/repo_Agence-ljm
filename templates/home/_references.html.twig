@@ -1,34 +1,37 @@
-<section id="refs" class="uk-section uk-section-default">
-    <div class="uk-container uk-container-large">
-        <h2 class="uk-text-center">Nos références</h2>
-        {% if references is empty %}
-        <p>Aucune référence n'a été trouvé</p>
-        {% else %}
+<div class="uk-container uk-container-large">
+    <h2 class="uk-text-center">Nos références</h2>
+    {% if references is empty %}
+    <p>Aucune référence n'a été trouvé</p>
+    {% else %}
 
-            <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid="masonry: true; parallax: 150">
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m"
+        uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 200" uk-grid="masonry: true; parallax: 150">
 
-                {% for reference in references %}
-                <div>
-                    <div class="uk-flex uk-flex-center ">
-                        <a uk-toggle="target: #reference-modal{{ reference.id }}">
-                        <div class="uk-inline uk-transition-toggle">
-                            <img height="{{ reference.imageHeight }}px" class="uk-border-rounded" data-src="/uploads/references_images/{{ reference.image }}" alt="{{ reference.captionImage }}" uk-img>
-                            <div class="uk-transition-fade uk-overlay uk-overlay-default uk-position-cover uk-flex uk-flex-center uk-flex-middle">
-                                <p class="uk-text-center uk-h3 uk-margin-remove">{{ reference.name }}</p>
-                            </div>
+        {% for reference in references %}
+        <div>
+            <div class="uk-flex uk-flex-center ">
+                <a uk-toggle="target: #reference-modal{{ reference.id }}">
+                    <div class="uk-inline uk-transition-toggle">
+                        <img height="{{ reference.imageHeight }}px" class="uk-border-rounded"
+                            data-src="/uploads/references_images/{{ reference.image }}"
+                            alt="{{ reference.captionImage }}" uk-img>
+                        <div
+                            class="uk-transition-fade uk-overlay uk-overlay-default uk-position-cover uk-flex uk-flex-center uk-flex-middle">
+                            <p class="uk-text-center uk-h3 uk-margin-remove">{{ reference.name }}</p>
                         </div>
-                        </a>
                     </div>
-                </div>
-                {% endfor %}
-
-            <div>
-                <div class="uk-align-center uk-flex uk-flex-center uk-flex-middle refs-button">
-                    <button uk-toggle="target: #allreference-modal" class="uk-button-front button-large uk-width-1-1 uk-button uk-button-secondary uk-border-rounded">Tout Voir</button>
-                </div>
+                </a>
             </div>
-            </div>
-        {% endif %}
         </div>
-</section>
+        {% endfor %}
 
+        <div>
+            <div class="uk-align-center uk-flex uk-flex-center uk-flex-middle refs-button">
+                <button uk-toggle="target: #allreference-modal"
+                    class="uk-button-front button-large uk-width-1-1 uk-button uk-button-secondary uk-border-rounded">Tout
+                    Voir</button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

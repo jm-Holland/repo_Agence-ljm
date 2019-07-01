@@ -1,17 +1,19 @@
-<section id="contact" class="uk-section uk-section-secondary">
-    <div class="uk-container" uk-scrollspy="target: > form; cls: uk-animation-fade; delay: 200">
-        <h2 class="uk-text-center">Contact</h2>
-        {{form_start(form)}}
-        <form class="uk-form-stacked">
-            <div class="uk-child-width-expand@s" uk-grid>
+<div class="uk-container" uk-scrollspy="target: > form; cls: uk-animation-fade; delay: 200">
+    <h2 class="uk-text-center">Contact</h2>
+    {{form_start(form)}}
+    <form action="" method="post" class="uk-form-stacked">
+        <div class="uk-child-width-expand@s" uk-grid>
+            <div>
                 <div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Nom* :</label>
                         <div class="uk-form-controls">
-                            {{form_widget(form.lastName)}}
+                            {{ form_widget(form.lastName)}}
                             {{form_errors(form.lastName)}}
                         </div>
                     </div>
+                </div>
+                <div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Email* :</label>
                         <div class="uk-form-controls">
@@ -20,6 +22,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
                 <div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Prénom* :</label>
@@ -28,69 +32,72 @@
                             {{form_errors(form.firstName)}}
                         </div>
                     </div>
+                </div>
+                <div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-stacked-text">Organisation :</label>
                         <div class="uk-form-controls">
-                            {{form_widget(form.organisation)}}
-                            {{form_errors(form.organisation)}}
+                            {{form_widget(form.company)}}
+                            {{form_errors(form.company)}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Objet du message* :</label>
-                <div class="uk-form-controls">
-                    {{form_widget(form.subject)}}
-                </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Objet du message* :</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.subject)}}
             </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Adresse* :</label>
-                <div class="uk-form-controls">
-                    {{form_widget(form.address)}}
-                    {{form_errors(form.address)}}
-                </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Adresse* :</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.address)}}
+                {{form_errors(form.address)}}
             </div>
-            <div class="uk-child-width-expand@s" uk-grid>
-                <div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="form-stacked-text">Code Postal* :</label>
-                        <div class="uk-form-controls">
-                            {{form_widget(form.codePostal)}}
-                            {{form_errors(form.codePostal)}}
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="form-stacked-text">Ville* :</label>
-                        <div class="uk-form-controls">
-                            {{form_widget(form.city)}}
-                            {{form_errors(form.city)}}
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="form-stacked-text">Pays* :</label>
-                        <div class="uk-form-controls">
-                            {{form_widget(form.country)}}
-                        </div>
+        </div>
+        <div class="uk-child-width-expand@s" uk-grid>
+            <div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Code Postal* :</label>
+                    <div class="uk-form-controls">
+                        {{form_widget(form.postalCode)}}
+                        {{form_errors(form.postalCode)}}
                     </div>
                 </div>
             </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Message* :</label>
-                <div class="uk-form-controls">
-                    {{form_widget(form.Content)}}
-                    {{form_errors(form.Content)}}
+            <div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Ville* :</label>
+                    <div class="uk-form-controls">
+                        {{form_widget(form.city)}}
+                        {{form_errors(form.city)}}
+                    </div>
                 </div>
             </div>
-            <p class="uk-light">Les champs avec * son obligatoires</p>
-            <div class="uk-margin">
-                <button type="submit"
-                    class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-light uk-align-center">Envoyer</button>
+            <div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-stacked-text">Pays* :</label>
+                    <div class="uk-form-controls">
+                        {{form_widget(form.country)}}
+                    </div>
+                </div>
             </div>
-        </form>
-        {{form_end(form)}}
-    </div>
-</section>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Message* :</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.content)}}
+                {{form_errors(form.content)}}
+            </div>
+        </div>
+        <p class="uk-light">Les champs avec * son obligatoires</p>
+        {{ form_widget(form)}}
+        <div class="uk-margin">
+            <input type="submit" class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-align-center"
+                value="Envoyer" />
+        </div>
+    </form>
+    {{form_end(form)}}
+</div>

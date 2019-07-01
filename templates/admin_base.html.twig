@@ -10,8 +10,8 @@
     {% block stylesheets %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
     <link rel="stylesheet" href="trumbowyg/dist/ui/trumbowyg.min.css">
-    <link rel="stylesheet" href="{{asset('css/style_l2j.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin_style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_ljm.css')}}">
+
 
     {% endblock %}
 </head>
@@ -30,17 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
     <script src="https://kit.fontawesome.com/6da3cb6307.js"></script>
     <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('textarea.ckeditor').ckeditor();
-        });
-        $('.custom-file-input').on('change', function (event) {
-            var inputFile = event.currentTarget;
-            $(inputFile).parent()
-                .find('.custom-file-label')
-                .html(inputFile.files[0].name);
-        });
-    </script>
+    <script src="{{asset('textareaCkeditor.js')}}"></script>
 
     {% endblock %}
 </body>

@@ -102,6 +102,11 @@ class Customer
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $agreeRGPD;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -223,6 +228,18 @@ class Customer
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getAgreeRGPD(): ?bool
+    {
+        return $this->agreeRGPD;
+    }
+
+    public function setAgreeRGPD(?bool $agreeRGPD): self
+    {
+        $this->agreeRGPD = $agreeRGPD;
 
         return $this;
     }

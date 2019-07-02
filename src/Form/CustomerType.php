@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CustomerType extends AbstractType
@@ -80,6 +81,14 @@ class CustomerType extends AbstractType
                     'class' => 'uk-textarea',
                     'rows' => '6',
                     'placeholder' => 'Votre message'
+                ]
+            ])
+            ->add('agreeRGPD', CheckboxType::class, [
+                'required' => true,
+                'attr' => [
+                    'type' => 'uk-checkbox',
+                    'class' => 'uk-checkbox'
+
                 ]
             ]);
     }

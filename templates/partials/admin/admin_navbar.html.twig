@@ -3,12 +3,12 @@
     <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="{{ path('admin_index')}}">
-                <img id="logo_admin" data-src="{{asset('img/Logos_ljm/Logo_Hpb_1.png')}}"
-                    alt="logo du dashboard agence LJM" uk-img>
+                <img id="logo" data-src="{{asset('img/Logos_ljm/Logo_Hpb_1.png')}}" alt="logo du dashboard agence LJM"
+                    uk-img>
             </a>
         </div>
-        <div class="uk-navbar-right">
-            <a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon href="off-canvas-push"
+        <div class="uk-navbar-right uk-hidden@m">
+            <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="off-canvas-push"
                 uk-toggle="target: #offcanvas-push"></a>
         </div>
         <div class="uk-navbar-right uk-visible@m">
@@ -63,7 +63,7 @@
     <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-        <ul class="uk-nav uk-nav-default">
+        <ul class="uk-nav uk-nav-default" uk-nav="">
             <li>
                 <a href="{{ path('admin_index') }}">
                     DashBoard

@@ -64,41 +64,41 @@
     <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-        <ul class="uk-nav uk-nav-default">
+        <ul class="uk-nav uk-nav-default" uk-nav="">
 
             <li>
-                <a href="#index">
+                <a href="#index" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     Accueil
                 </a>
             </li>
             <li>
-                <a href="#services">
+                <a href="#services" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     Nos services
                 </a>
             </li>
             <li>
-                <a href="#refs">
+                <a href="#refs" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     Nos références
                 </a>
             </li>
             <li>
-                <a href="#blog-section">
+                <a href="#blog-section" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     Le blog
                 </a>
             </li>
             <li>
-                <a href="#agence">
+                <a href="#agence" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     L'agence
                 </a>
             </li>
             <li>
-                <a href="#contact">
+                <a href="#contact" uk-scroll uk-slideshow-parallax="y: 50,0,0; opacity: 1,1,0">
                     Contact
                 </a>
             </li>
             {% if is_granted('ROLE_USER') %}
             <li>
-                <a href="{{ path ('admin_index') }}">
+                <a href="{{path('admin_index')}}">
                     Dashboard
                 </a>
             </li>

@@ -36,7 +36,8 @@ p,
 label {
     font-family: 'Noto Sans JP', sans-serif;
 }
-.uk-light{
+
+.uk-light {
     color: #fff;
 }
 
@@ -196,8 +197,7 @@ a.uk-text-small {
 
 /* Modification propre agence l2J*/
 
-#logo,
-#logo_admin {
+#logo {
     max-width: 7.5rem;
     max-height: 3.75rem;
 }

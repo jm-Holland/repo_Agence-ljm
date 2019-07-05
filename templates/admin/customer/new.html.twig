@@ -1,11 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}New Customer{% endblock %}
 
 {% block body %}
-<h1>Create new Customer</h1>
+<section class="uk-section">
+    <div class="uk-container">
+        <h1>Create new Customer</h1>
 
-{{ include('admin/customer/_form.html.twig') }}
+        {{ include('admin/customer/_form.html.twig') }}
+        <div class="ukmargin-bottom uk-margin-top">
+            <a class="uk-button uk-button-text" href="{{ path('customer_index') }}">retour à la liste des clients</a>
+        </div>
+    </div>
+</section>
 
-<a href="{{ path('customer_index') }}">back to list</a>
 {% endblock %}

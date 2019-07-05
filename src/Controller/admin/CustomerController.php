@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/customer")
@@ -20,10 +21,13 @@ class CustomerController extends AbstractController
     /**
      * @Route("/", name="customer_index", methods={"GET"})
      */
-    public function index(CustomerRepository $customerRepository): Response
+    public function index(Request $request, CustomerRepository $customersRepository, PaginatorInterface $paginator): Response
     {
+        $allCustomers = $customersRepository->findAll();
+        $customers = $paginator->paginate($allCustomers, $request->query->getInt('page', 1), 6);
+        $customers->setTemplate('partials/_pagination.html.twig');
         return $this->render('admin/customer/index.html.twig', [
-            'customers' => $customerRepository->findAll(),
+            'customers' => $customers
         ]);
     }
 
@@ -37,10 +41,13 @@ class CustomerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($customer);
-            $entityManager->flush();
+            $customer = $fomr->getData();
 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
+            $em->flush();
+
+            $this->addFlash('success', 'Le client a bien été enregistré!');
             return $this->redirectToRoute('customer_index');
         }
 
@@ -70,6 +77,8 @@ class CustomerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Client mis a jour !');
 
             return $this->redirectToRoute('customer_index', [
                 'id' => $customer->getId(),

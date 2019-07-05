@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-alternative.html.twig' %}
 
 {% block title %}Connexion{% endblock %}
 
@@ -13,13 +13,17 @@
                 <div class="uk-alert uk-alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 <div class="uk-margin">
-                    <label for="inputUsername" class="sr-only">Nom de compte :</label>
-                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
-                        class="form-control" placeholder="Nom de compte" required autofocus> </div>
+                    <div class="uk-form-controls">
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
+                            class="uk-input" placeholder="Nom de compte" required autofocus>
+                    </div>
+                </div>
                 <div class="uk-margin">
-                    <label for="inputPassword" class="sr-only">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control"
-                        placeholder="Mot de passe" required>
+                    <div class="uk-form-controls">
+                        <input type="password" name="password" id="inputPassword" class="uk-input"
+                            placeholder="Mot de passe" required>
+                    </div>
+
                 </div>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -31,7 +35,9 @@
                 </div>
                 <div class="uk-margin">
 
-                    <button class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-light uk-align-center" type="submit">
+                    <button
+                        class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-light uk-align-center"
+                        type="submit">
                         Connexion
                     </button>
                 </div>

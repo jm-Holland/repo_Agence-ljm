@@ -93,6 +93,12 @@
             </div>
         </div>
         <p class="uk-light">Les champs avec * son obligatoires</p>
+        <div class="uk-margin uk-align-center">
+            <label for="form-stacked-text" class="uk-form-label">J'autorise la collecte de mes données
+                personnelles</label>
+            <div id="agreeRGPD">{{form_widget(form.agreeRGPD)}}</div>
+
+        </div>
         {{ form_widget(form)}}
         <div class="uk-margin">
             <input type="submit" class="uk-button uk-button-front uk-button-primary uk-border-rounded uk-align-center"

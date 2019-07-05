@@ -1,4 +1,77 @@
 {{ form_start(form) }}
+<form action="" method="post" class="uk-form-stacked">
+    <div uk-grid>
+        <div>
+            <label for="firstName" class="uk-form-label">Prénom</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.firstName)}}
+            </div>
+        </div>
+        <div>
+            <label for="lastName" class="uk-form-label">Nom</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.lastName)}}
+            </div>
+        </div>
+        <div>
+            <label for="lastName" class="uk-form-label">Entreprise</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.company)}}
+            </div>
+        </div>
+    </div>
+    <div uk-grid>
+        <div>
+            <label for="address" class="uk-form-label">adresse</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.address)}}
+            </div>
+        </div>
+        <div>
+            <label for="postalCode" class="uk-form-label">Code Postale</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.postalCode)}}
+            </div>
+        </div>
+        <div>
+            <label for="city" class="uk-form-label">city</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.city)}}
+            </div>
+        </div>
+    </div>
+    <div uk-grid>
+        <div>
+            <label for="email" class="uk-form-label">email</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.email)}}
+            </div>
+        </div>
+        <div>
+            <label for="Subject" class="uk-form-label">Sujet</label>
+            <div class="uk-form-controls">
+                {{form_widget(form.subject)}}
+            </div>
+        </div>
+
+    </div>
+    <div class="uk-margin">
+        <label for="content" class="uk-form-label">Contenu du message</label>
+        <div class="uk-form-controls">
+            {{form_widget(form.content)}}
+        </div>
+    </div>
+    <div class="uk-invisible">
+        {{form_widget(form.country)}}
+    </div>
+    {% if customer.agreeRGPD == 0 %}
+    {{form_widget(form.agreeRGPD)}} Pas de validation RGPD
+    {% else %}
+    <div class="uk-invisible">{{form_widget(form.agreeRGPD)}}</div>
+    {% endif %}
+
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="uk-button uk-button-primary uk-border-rounded">{{ button_label|default('Valider') }}</button>
+</form>
+
 {{ form_end(form) }}

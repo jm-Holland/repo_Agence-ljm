@@ -1,62 +1,66 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Customer{% endblock %}
+{% block title %}Client {{customer.id}}{% endblock %}
 
 {% block body %}
-<h1>Customer</h1>
+<section class="uk-section ">
+    <div class="uk-container">
+        <article class="uk-article">
+            <h1 class="uk-article-title uk-margin">{{ customer.company }}</h1>
+            {% for message in app.flashes('success') %}
+            <div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+            <ul class="uk-breadcrumb uk-margin-remove">
+                <li class="uk-disabled">
+                    <p class="uk-article-meta"><span uk-icon="icon: calendar"></span>
+                        {#{ customer.createdAt|date('d/m/Y à H:i')}#}</p>
+                </li>
+                <li>
+                    <p class="uk-article-meta">
+                        <a href="{{ path('customer_edit',{'id': customer.id})}}">
+                            <span uk-icon="icon: file-edit"></span>
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <p class="uk-article-meta">
+                        <a href="#delete-confirm" uk-toggle>
+                            <span uk-icon="icon: trash"></span>
+                        </a>
+                    </p>
+                </li>
+                <div id="delete-confirm" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <p class="uk-text-center">
+                            Voulez vous vraiment supprimer ce client ?
+                        </p>
+                        <div class="uk-text-center">
+                            {% include "admin/customer/_delete_form.html.twig" %}
+                            <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                type="button">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <h4 class="uk-title">{{ customer.firstName }} {{customer.LastName|upper}}</h4>
+            <p>{{customer.email}}</p>
+            <p>{{customer.address}}</p>
+            <p>
+                {{customer.postalCode}} {{customer.city|upper}}
+            </p>
+            <p>{{customer.country}}</p>
+            <hr>
+            <p> Demande {{customer.subject}}</p>
+            <p class="uk-text-small">Message de l'email: </p>
+            <p>{{customer.content}}</p>
 
-<table class="uk-table">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ customer.id }}</td>
-        </tr>
-        <tr>
-            <th>FirstName</th>
-            <td>{{ customer.firstName }}</td>
-        </tr>
-        <tr>
-            <th>LastName</th>
-            <td>{{ customer.lastName }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ customer.email }}</td>
-        </tr>
-        <tr>
-            <th>Company</th>
-            <td>{{ customer.company }}</td>
-        </tr>
-        <tr>
-            <th>Subject</th>
-            <td>{{ customer.subject }}</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>{{ customer.address }}</td>
-        </tr>
-        <tr>
-            <th>PostalCode</th>
-            <td>{{ customer.postalCode }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ customer.city }}</td>
-        </tr>
-        <tr>
-            <th>Country</th>
-            <td>{{ customer.country }}</td>
-        </tr>
-        <tr>
-            <th>Content</th>
-            <td>{{ customer.content }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<a href="{{ path('customer_index') }}">back to list</a>
-
-<a href="{{ path('customer_edit', {'id': customer.id}) }}">edit</a>
-
-{{ include('admin/customer/_delete_form.html.twig') }}
+        </article>
+        <div class="uk-margin">
+            <a class="uk-button uk-button-text" href="{{ path('customer_index') }}">Retour aux clients</a>
+        </div>
+    </div>
+</section>
 {% endblock %}

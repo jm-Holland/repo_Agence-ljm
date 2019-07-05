@@ -3,11 +3,17 @@
 {% block title %}Edit Customer{% endblock %}
 
 {% block body %}
-<h1>Edit Customer</h1>
+<section class="uk-section">
+    <div class="uk-container">
+        <h1>Editer le client</h1>
 
-{{ include('admin/customer/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('admin/customer/_form.html.twig', {'button_label': 'Update'}) }}
 
-<a href="{{ path('customer_index') }}">back to list</a>
+        <a class="uk-button uk-button-text" href="{{ path('customer_index') }}">Retour à la liste des clents</a>
+        <a class="uk-link-muted">|</a>
+        <a class="uk-button uk-button-text" href="{{ path('home_index') }}#blog">Retour à l'accueil</a>
 
-{{ include('admin/customer/_delete_form.html.twig') }}
+    </div>
+</section>
+
 {% endblock %}

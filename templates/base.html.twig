@@ -20,21 +20,22 @@
     <meta name="msapplication-TileImage" content="favicon-144.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <link rel="icon" href="{{asset('img/Logos_ljm/favicon/animated_favicon.gif')}}" type="image/gif">
+    <browserconfig>
+        <msapplication>
+            <tile>
+                <square70x70logo src="{{asset('img/Logos_ljm/favicon/smalltile.png')}}">
+                    <square150x150logo src="{{asset('img/Logos_ljm/favicon/mediumtile.png')}}">
+                        <square310x310logo src="{{asset('img/Logo_ljm/favicon/largetile.png')}}">
+
+            </tile>
+        </msapplication>
+    </browserconfig>
     <title>Agence LJM - {% block title %}{% endblock %}</title>
     {% block stylesheets %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
     <link rel="stylesheet" href="{{asset('css/style_ljm.css')}}">
     {% endblock %}
-    <browserconfig>
-        <msapplication>
-            <tile>
-                <square70x70logo src="{{asset('img/Logos_ljm/favicon/smalltile.png')}}" />
-                <square150x150logo src="{{asset('img/Logos_ljm/favicon/mediumtile.png')}}" />
-                <square310x310logo src="{{asset('img/Logo_ljm/favicon/largetile.png')}}" />
 
-            </tile>
-        </msapplication>
-    </browserconfig>
 </head>
 
 <body>

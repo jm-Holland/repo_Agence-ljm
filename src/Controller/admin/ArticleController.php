@@ -3,6 +3,7 @@
 namespace App\Controller\admin;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
@@ -30,7 +31,8 @@ class ArticleController extends AbstractController
 
         $articles = $paginator->paginate(
             $allArticles,
-            $request->query->getInt('page', 1), 6
+            $request->query->getInt('page', 1),
+            6
         );
         $articles->setTemplate('partials/_pagination.html.twig');
         return $this->render('admin/article/index.html.twig', [
@@ -131,5 +133,22 @@ class ArticleController extends AbstractController
         return $this->render('admin/article/_comments.html.twig', [
             'comments' => $comments->findAll()
         ]);
+    }
+
+    /**
+     * @Route("/comment/{id}/delete", name="comment_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
+     */
+    public function delete_comment(Request $request, Comment $comment): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($comment);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('comment_index');
     }
 }

@@ -53,8 +53,8 @@
                 </div>
                 {% endif %}
             </ul>
-            <img class="uk-align-left uk-width-1-2 uk-margin uk-border-rounded" data-src="/uploads/articles_images/{{ article.image }}"
-                alt="{{article.captionImage}}" uk-img>
+            <img class="uk-align-left uk-width-1-2 uk-margin uk-border-rounded"
+                data-src="/uploads/articles_images/{{ article.image }}" alt="{{article.captionImage}}" uk-img>
             <p>{{ article.content|raw }}</p>
         </article>
         <div class="uk-margin">
@@ -80,7 +80,7 @@
                                     {{ comment.author }}
                                 </h4>
                                 <p class="uk-comment-meta  uk-margin-remove-top">
-                                    {{ article.createdAt|date('d/m/Y à H:i') }}
+                                    {{ comment.createdAt|date('d/m/Y à H:i') }}
                                 </p>
                             </div>
                         </header>

@@ -93,7 +93,6 @@ class Article
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->createdAt = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -168,9 +167,12 @@ class Article
         return $this->createdAt;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime();
 
         return $this;
     }

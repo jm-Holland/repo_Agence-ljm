@@ -28,8 +28,19 @@
                             </a>
                         </p>
                     </td>
+                    <div id="delete-confirm" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <p class="uk-text-center">
+                                Voulez vous vraiment supprimer ce commentaire ?
+                            </p>
+                            <div class="uk-text-center">
+                                {% include "admin/article/_comment_delete_form.html.twig" %}
+                                <button class="uk-margin uk-button uk-button-default uk-modal-close"
+                                    type="button">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
-
                 {% endfor %}
             </tbody>
         </table>

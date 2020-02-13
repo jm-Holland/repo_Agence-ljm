@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{asset('img/Logos_ljm/favicon/favicon.ico')}}" type="image/x-icon">
-    <link rel="icon" href="{{asset('img/Logos_ljm/favicon/favicon.png')}}" type="image/png">
-    <link rel="icon" sizes="32x32" href="{{asset('img/Logos_ljm/favicon/favicon-32.png')}}" type="image/png">
-    <link rel="icon" sizes="64x64" href="{{asset('img/Logos_ljm/favicon/favicon-64.png')}}" type="image/png">
-    <link rel="icon" sizes="96x96" href="{{asset('img/Logos_ljm/favicon/favicon-96.png')}}" type="image/png">
-    <link rel="icon" sizes="196x196" href="{{asset('img/Logos_ljm/favicon/favicon-196.png')}}" type="image/png">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-144x144.png')}}">
-    <meta name="msapplication-TileImage" content="favicon-144.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <link rel="icon" href="{{asset('img/Logos_ljm/favicon/animated_favicon.gif')}}" type="image/gif">
-    <browserconfig>
-        <msapplication>
-            <tile>
-                <square70x70logo src="{{asset('img/Logos_ljm/favicon/smalltile.png')}}">
-                    <square150x150logo src="{{asset('img/Logos_ljm/favicon/mediumtile.png')}}">
-                        <square310x310logo src="{{asset('img/Logo_ljm/favicon/largetile.png')}}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="{{asset('img/Logos_ljm/favicon/favicon.ico')}}" type="image/x-icon">
+        <link rel="icon" href="{{asset('img/Logos_ljm/favicon/favicon.png')}}" type="image/png">
+        <link rel="icon" sizes="32x32" href="{{asset('img/Logos_ljm/favicon/favicon-32.png')}}" type="image/png">
+        <link rel="icon" sizes="64x64" href="{{asset('img/Logos_ljm/favicon/favicon-64.png')}}" type="image/png">
+        <link rel="icon" sizes="96x96" href="{{asset('img/Logos_ljm/favicon/favicon-96.png')}}" type="image/png">
+        <link rel="icon" sizes="196x196" href="{{asset('img/Logos_ljm/favicon/favicon-196.png')}}" type="image/png">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon.png')}}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-60x60.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-76x76.png')}}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-114x114.png')}}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-120x120.png')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{asset('img/Logos_ljm/favicon/apple-touch-icon-144x144.png')}}">
+        <meta name="msapplication-TileImage" content="favicon-144.png">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <link rel="icon" href="{{asset('img/Logos_ljm/favicon/animated_favicon.gif')}}" type="image/gif">
+        <browserconfig>
+            <msapplication>
+                <tile>
+                    <square70x70logo src="{{asset('img/Logos_ljm/favicon/smalltile.png')}}">
+                        <square150x150logo src="{{asset('img/Logos_ljm/favicon/mediumtile.png')}}">
+                            <square310x310logo src="{{asset('img/Logo_ljm/favicon/largetile.png')}}">
 
-            </tile>
-        </msapplication>
-    </browserconfig>
-    <title>Agence LJM - {% block title %}{% endblock %}</title>
-    {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
-    <link rel="stylesheet" href="{{asset('css/style_ljm.css')}}">
-    {% endblock %}
+                </tile>
+            </msapplication>
+        </browserconfig>
+        <title>Agence LJM - {% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
+        <link rel="stylesheet" href="{{asset('css/style_ljm.css')}}">
+        {% endblock %}
 
-</head>
+    </head>
 
-<body>
-    {% include "partials/_navbar-alternative.html.twig" %}
+    <body>
+        {% include "partials/_navbar-alternative.html.twig" %}
 
-    {% block body %}{% endblock %}
+        {% block body %}{% endblock %}
 
-    {% include "partials/_footer.html.twig" %}
+        {% include "partials/_footer.html.twig" %}
 
-    {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
-    <script src="https://kit.fontawesome.com/6da3cb6307.js"></script>
+        {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
+        <script src="https://kit.fontawesome.com/6da3cb6307.js"></script>
 
-    {% endblock %}
-</body>
+        {% endblock %}
+    </body>
 
 </html>

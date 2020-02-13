@@ -73,7 +73,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/politique-de-confidentialité", name="footer_privacy_policy")
+     * @Route("/politique-de-confidentialite", name="footer_privacy_policy")
      */
     public function privacyPolicy()
     {

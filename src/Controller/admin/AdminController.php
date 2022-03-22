@@ -2,15 +2,15 @@
 
 namespace App\Controller\admin;
 
-use App\Repository\ReferenceRepository;
-use App\Repository\ServiceRepository;
-use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use App\Repository\CustomerRepository;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ReferenceRepository;
+use App\Repository\ServiceRepository;
+use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin")
@@ -21,9 +21,14 @@ class AdminController extends AbstractController
     /**
      * @Route("/DashBoard", name="admin_index")
      */
-    public function index(ArticleRepository $articles, CommentRepository $comments, UserRepository $users, CustomerRepository $customers,
-                          ReferenceRepository $references, ServiceRepository $services)
-    {
+    public function index(
+        ArticleRepository $articles,
+        CommentRepository $comments,
+        UserRepository $users,
+        CustomerRepository $customers,
+        ReferenceRepository $references,
+        ServiceRepository $services
+    ) {
         return $this->render('admin/index.html.twig', [
             'articles'  => $articles->findAll(),
             'comments'  => $comments->findAll(),

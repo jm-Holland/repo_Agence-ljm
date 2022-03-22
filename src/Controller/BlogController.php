@@ -59,6 +59,7 @@ class BlogController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', "Votre commentaire est bien enregistré");
+            
         }
         return $this->render('home/blog/post_show.html.twig', [
             'article' => $article,
